@@ -108,6 +108,11 @@ export const InputFormStage: React.FC<InputFormStageProps> = ({
               <span>Lihat Riwayat Sesi Terakhir</span>
             </button>
           )}
+
+          {/* Subtle signature */}
+          <p className="text-center text-[10px] font-sans text-amber-200/40 tracking-wider pt-2 select-none">
+            ✦ Crafted with magic by <span className="text-amber-300/70 font-medium">Nova Miftakhul Huda</span> ✦
+          </p>
         </div>
       </form>
     </div>

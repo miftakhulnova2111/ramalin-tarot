@@ -51,13 +51,17 @@ export const ShuffleStage: React.FC<ShuffleStageProps> = ({
     };
   }, [animPhase]);
 
-  // Card Selection: Zoom in + Evil laugh -> Swoop UPWARD into top target slot
+  // Play crisp acoustic riffle shuffle on deck round start
+  useEffect(() => {
+    audioManager.playCardShuffle();
+  }, [currentStep]);
+
+  // Card Selection: Zoom in -> Swoop UPWARD into top target slot
   const handleSelectCard = (cardIdx: number) => {
     if (isLocking || animPhase !== 'idle') return;
 
-    // Trigger audio effects: Evil laugh + Card whoosh
-    audioManager.playEvilChuckle();
-    audioManager.playCardWhoosh();
+    // Trigger punchy card draw sound
+    audioManager.playCardSlide();
 
     setAnimatingCardId(cardIdx);
     setAnimPhase('zoom');

@@ -291,6 +291,12 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
       ctx.fillText(line, 540, startY + idx * lineSpacing);
     });
 
+    // 7. Subtle Attribution Signature
+    ctx.fillStyle = 'rgba(255, 213, 140, 0.7)';
+    ctx.font = '500 16px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('✦ Crafted with magic by Nova Miftakhul Huda ✦', 540, 1868);
+
     return new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => {
         if (blob) resolve(blob);
@@ -359,7 +365,7 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
               ✦ RAMALIN TAROT ✦
             </span>
             <span className="text-[10px] text-amber-300 font-sans block">
-              Pemandu: {userName}
+              Pembacaan Takdir: {userName}
             </span>
             <p className="text-[11px] font-serif italic text-tarot-text mt-0.5 truncate max-w-[240px]">
               "{question}"
@@ -393,9 +399,14 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
             </div>
           </div>
 
-          <p className="text-[10px] text-tarot-muted italic line-clamp-2 px-2">
-            "{reading.share_summary}"
-          </p>
+          <div className="w-full flex flex-col items-center gap-1">
+            <p className="text-[10px] text-tarot-muted italic line-clamp-2 px-2">
+              "{reading.share_summary}"
+            </p>
+            <span className="text-[8px] text-amber-200/50 font-sans">
+              ✦ Crafted with magic by Nova Miftakhul Huda ✦
+            </span>
+          </div>
         </div>
 
         {/* Action Button: Canvas Render + Download/Share */}
