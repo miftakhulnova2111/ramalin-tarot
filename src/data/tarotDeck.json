@@ -1,0 +1,1631 @@
+[
+  {
+    "id": 0,
+    "slug": "00-the-fool",
+    "name": "The Fool",
+    "name_id": "Si Pandir",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/00-the-fool.webp",
+    "keywords_upright": [
+      "Awal baru",
+      "spontanitas",
+      "keberanian melangkah"
+    ],
+    "keywords_reversed": [
+      "Kecerobohan",
+      "ragu-ragu",
+      "takut memulai"
+    ],
+    "fallback_upright": "Energi The Fool (Si Pandir) membawa pesan kejernihan: Awal baru, spontanitas, keberanian melangkah. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Fool (Si Pandir) mengingatkanmu untuk waspada terhadap Kecerobohan, ragu-ragu, takut memulai. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 1,
+    "slug": "01-the-magician",
+    "name": "The Magician",
+    "name_id": "Sang Penyihir",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/01-the-magician.webp",
+    "keywords_upright": [
+      "Kekuatan kehendak",
+      "potensi nyata",
+      "manifestasi"
+    ],
+    "keywords_reversed": [
+      "Manipulasi",
+      "bakat terpendam",
+      "ilusi"
+    ],
+    "fallback_upright": "Energi The Magician (Sang Penyihir) membawa pesan kejernihan: Kekuatan kehendak, potensi nyata, manifestasi. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Magician (Sang Penyihir) mengingatkanmu untuk waspada terhadap Manipulasi, bakat terpendam, ilusi. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 2,
+    "slug": "02-the-high-priestess",
+    "name": "The High Priestess",
+    "name_id": "Sang Pendeta Wanita",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/02-the-high-priestess.webp",
+    "keywords_upright": [
+      "Intuisi tajam",
+      "misteri batin",
+      "ketenangan"
+    ],
+    "keywords_reversed": [
+      "Rahasia tersembunyi",
+      "mengabaikan firasat",
+      "dingin"
+    ],
+    "fallback_upright": "Energi The High Priestess (Sang Pendeta Wanita) membawa pesan kejernihan: Intuisi tajam, misteri batin, ketenangan. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The High Priestess (Sang Pendeta Wanita) mengingatkanmu untuk waspada terhadap Rahasia tersembunyi, mengabaikan firasat, dingin. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 3,
+    "slug": "03-the-empress",
+    "name": "The Empress",
+    "name_id": "Sang Ratu Kesuburan",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/03-the-empress.webp",
+    "keywords_upright": [
+      "Kelimpahan",
+      "keibuan",
+      "kreativitas merekah"
+    ],
+    "keywords_reversed": [
+      "Ketergantungan",
+      "pemborosan",
+      "kreativitas tersumbat"
+    ],
+    "fallback_upright": "Energi The Empress (Sang Ratu Kesuburan) membawa pesan kejernihan: Kelimpahan, keibuan, kreativitas merekah. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Empress (Sang Ratu Kesuburan) mengingatkanmu untuk waspada terhadap Ketergantungan, pemborosan, kreativitas tersumbat. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 4,
+    "slug": "04-the-emperor",
+    "name": "The Emperor",
+    "name_id": "Sang Kaisar",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/04-the-emperor.webp",
+    "keywords_upright": [
+      "Otoritas",
+      "struktur kokoh",
+      "kepemimpinan"
+    ],
+    "keywords_reversed": [
+      "Tirani",
+      "kekakuan",
+      "hilangnya kendali"
+    ],
+    "fallback_upright": "Energi The Emperor (Sang Kaisar) membawa pesan kejernihan: Otoritas, struktur kokoh, kepemimpinan. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Emperor (Sang Kaisar) mengingatkanmu untuk waspada terhadap Tirani, kekakuan, hilangnya kendali. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 5,
+    "slug": "05-the-hierophant",
+    "name": "The Hierophant",
+    "name_id": "Sang Mahaguru",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/05-the-hierophant.webp",
+    "keywords_upright": [
+      "Tradisi bijak",
+      "nilai moral",
+      "bimbingan spiritual"
+    ],
+    "keywords_reversed": [
+      "Pemberontakan",
+      "doktrin kaku",
+      "jalan non-konvensional"
+    ],
+    "fallback_upright": "Energi The Hierophant (Sang Mahaguru) membawa pesan kejernihan: Tradisi bijak, nilai moral, bimbingan spiritual. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Hierophant (Sang Mahaguru) mengingatkanmu untuk waspada terhadap Pemberontakan, doktrin kaku, jalan non-konvensional. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 6,
+    "slug": "06-the-lovers",
+    "name": "The Lovers",
+    "name_id": "Dua Hati",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/06-the-lovers.webp",
+    "keywords_upright": [
+      "Pilihan hati",
+      "harmoni cinta",
+      "keselarasan nilai"
+    ],
+    "keywords_reversed": [
+      "Ketidakharmonisan",
+      "keraguan komitmen",
+      "konflik nilai"
+    ],
+    "fallback_upright": "Energi The Lovers (Dua Hati) membawa pesan kejernihan: Pilihan hati, harmoni cinta, keselarasan nilai. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Lovers (Dua Hati) mengingatkanmu untuk waspada terhadap Ketidakharmonisan, keraguan komitmen, konflik nilai. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 7,
+    "slug": "07-the-chariot",
+    "name": "The Chariot",
+    "name_id": "Kereta Kemenangan",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/07-the-chariot.webp",
+    "keywords_upright": [
+      "Tekad baja",
+      "fokus tujuan",
+      "kendali diri"
+    ],
+    "keywords_reversed": [
+      "Kehilangan arah",
+      "dorongan agresif",
+      "hambatan jalan"
+    ],
+    "fallback_upright": "Energi The Chariot (Kereta Kemenangan) membawa pesan kejernihan: Tekad baja, fokus tujuan, kendali diri. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Chariot (Kereta Kemenangan) mengingatkanmu untuk waspada terhadap Kehilangan arah, dorongan agresif, hambatan jalan. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 8,
+    "slug": "08-strength",
+    "name": "Strength",
+    "name_id": "Kekuatan Batin",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/08-strength.webp",
+    "keywords_upright": [
+      "Kelembutan yang menundukkan",
+      "keberanian",
+      "kesabaran"
+    ],
+    "keywords_reversed": [
+      "Rasa rendah diri",
+      "kerentanan emosi",
+      "amarah tertahan"
+    ],
+    "fallback_upright": "Energi Strength (Kekuatan Batin) membawa pesan kejernihan: Kelembutan yang menundukkan, keberanian, kesabaran. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, Strength (Kekuatan Batin) mengingatkanmu untuk waspada terhadap Rasa rendah diri, kerentanan emosi, amarah tertahan. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 9,
+    "slug": "09-the-hermit",
+    "name": "The Hermit",
+    "name_id": "Sang Pertapa",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/09-the-hermit.webp",
+    "keywords_upright": [
+      "Pencarian batin",
+      "refleksi hening",
+      "kebijaksanaan"
+    ],
+    "keywords_reversed": [
+      "Keterasingan sepi",
+      "isolasi berlebih",
+      "menutup diri"
+    ],
+    "fallback_upright": "Energi The Hermit (Sang Pertapa) membawa pesan kejernihan: Pencarian batin, refleksi hening, kebijaksanaan. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Hermit (Sang Pertapa) mengingatkanmu untuk waspada terhadap Keterasingan sepi, isolasi berlebih, menutup diri. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 10,
+    "slug": "10-wheel-of-fortune",
+    "name": "Wheel of Fortune",
+    "name_id": "Roda Nasib",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/10-wheel-of-fortune.webp",
+    "keywords_upright": [
+      "Perputaran takdir",
+      "siklus baru",
+      "peluang tak terduga"
+    ],
+    "keywords_reversed": [
+      "Kemalangan sesaat",
+      "penolakan perubahan",
+      "nasib tertunda"
+    ],
+    "fallback_upright": "Energi Wheel of Fortune (Roda Nasib) membawa pesan kejernihan: Perputaran takdir, siklus baru, peluang tak terduga. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, Wheel of Fortune (Roda Nasib) mengingatkanmu untuk waspada terhadap Kemalangan sesaat, penolakan perubahan, nasib tertunda. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 11,
+    "slug": "11-justice",
+    "name": "Justice",
+    "name_id": "Keadilan Semesta",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/11-justice.webp",
+    "keywords_upright": [
+      "Kebenaran objektif",
+      "kejujuran",
+      "sebab-akibat"
+    ],
+    "keywords_reversed": [
+      "Ketidakadilan",
+      "prasangka bias",
+      "lari dari tanggung jawab"
+    ],
+    "fallback_upright": "Energi Justice (Keadilan Semesta) membawa pesan kejernihan: Kebenaran objektif, kejujuran, sebab-akibat. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, Justice (Keadilan Semesta) mengingatkanmu untuk waspada terhadap Ketidakadilan, prasangka bias, lari dari tanggung jawab. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 12,
+    "slug": "12-the-hanged-man",
+    "name": "The Hanged Man",
+    "name_id": "Sang Tergantung",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/12-the-hanged-man.webp",
+    "keywords_upright": [
+      "Sudut pandang baru",
+      "jeda berserah",
+      "pelepasan ego"
+    ],
+    "keywords_reversed": [
+      "Penundaan sia-sia",
+      "stagnasi",
+      "pengorbanan tanpa hasil"
+    ],
+    "fallback_upright": "Energi The Hanged Man (Sang Tergantung) membawa pesan kejernihan: Sudut pandang baru, jeda berserah, pelepasan ego. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Hanged Man (Sang Tergantung) mengingatkanmu untuk waspada terhadap Penundaan sia-sia, stagnasi, pengorbanan tanpa hasil. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 13,
+    "slug": "13-death",
+    "name": "Death",
+    "name_id": "Kelahiran Kembali",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/13-death.webp",
+    "keywords_upright": [
+      "Transformasi tuntas",
+      "akhir sebuah siklus",
+      "ruang baru"
+    ],
+    "keywords_reversed": [
+      "Takut melepaskan masa lalu",
+      "perubahan tertahan",
+      "duka berlarut"
+    ],
+    "fallback_upright": "Energi Death (Kelahiran Kembali) membawa pesan kejernihan: Transformasi tuntas, akhir sebuah siklus, ruang baru. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, Death (Kelahiran Kembali) mengingatkanmu untuk waspada terhadap Takut melepaskan masa lalu, perubahan tertahan, duka berlarut. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 14,
+    "slug": "14-temperance",
+    "name": "Temperance",
+    "name_id": "Keseimbangan Rasa",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/14-temperance.webp",
+    "keywords_upright": [
+      "Moderasi",
+      "harmoni elemen",
+      "kesabaran jiwa"
+    ],
+    "keywords_reversed": [
+      "Ketidakseimbangan ekstrem",
+      "konflik batin",
+      "tergesa-gesa"
+    ],
+    "fallback_upright": "Energi Temperance (Keseimbangan Rasa) membawa pesan kejernihan: Moderasi, harmoni elemen, kesabaran jiwa. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, Temperance (Keseimbangan Rasa) mengingatkanmu untuk waspada terhadap Ketidakseimbangan ekstrem, konflik batin, tergesa-gesa. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 15,
+    "slug": "15-the-devil",
+    "name": "The Devil",
+    "name_id": "Belenggu Bayang",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/15-the-devil.webp",
+    "keywords_upright": [
+      "Pelepasan ilusi materi",
+      "kesadaran jerat",
+      "bayang nafsu"
+    ],
+    "keywords_reversed": [
+      "Kebebasan dari keterikatan",
+      "memutus rantai ketergantungan"
+    ],
+    "fallback_upright": "Energi The Devil (Belenggu Bayang) membawa pesan kejernihan: Pelepasan ilusi materi, kesadaran jerat, bayang nafsu. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Devil (Belenggu Bayang) mengingatkanmu untuk waspada terhadap Kebebasan dari keterikatan, memutus rantai ketergantungan. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 16,
+    "slug": "16-the-tower",
+    "name": "The Tower",
+    "name_id": "Guncangan Petir",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/16-the-tower.webp",
+    "keywords_upright": [
+      "Runtuhnya kepalsuan",
+      "pencerahan mendadak",
+      "kebebasan"
+    ],
+    "keywords_reversed": [
+      "Takut akan bencana",
+      "menghindari krisis yang tak terelakkan"
+    ],
+    "fallback_upright": "Energi The Tower (Guncangan Petir) membawa pesan kejernihan: Runtuhnya kepalsuan, pencerahan mendadak, kebebasan. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Tower (Guncangan Petir) mengingatkanmu untuk waspada terhadap Takut akan bencana, menghindari krisis yang tak terelakkan. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 17,
+    "slug": "17-the-star",
+    "name": "The Star",
+    "name_id": "Bintang Harapan",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/17-the-star.webp",
+    "keywords_upright": [
+      "Harapan bersinar",
+      "kedamaian jiwa",
+      "inspirasi terang"
+    ],
+    "keywords_reversed": [
+      "Kehilangan asa",
+      "pesimisme",
+      "kekecewaan mendalam"
+    ],
+    "fallback_upright": "Energi The Star (Bintang Harapan) membawa pesan kejernihan: Harapan bersinar, kedamaian jiwa, inspirasi terang. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Star (Bintang Harapan) mengingatkanmu untuk waspada terhadap Kehilangan asa, pesimisme, kekecewaan mendalam. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 18,
+    "slug": "18-the-moon",
+    "name": "The Moon",
+    "name_id": "Bulan Khayalan",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/18-the-moon.webp",
+    "keywords_upright": [
+      "Intuisi mimpi",
+      "menghadapi ilusi bawah sadar",
+      "misteri"
+    ],
+    "keywords_reversed": [
+      "Pelepasan ketakutan batin",
+      "kabut perlahan tersibak"
+    ],
+    "fallback_upright": "Energi The Moon (Bulan Khayalan) membawa pesan kejernihan: Intuisi mimpi, menghadapi ilusi bawah sadar, misteri. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Moon (Bulan Khayalan) mengingatkanmu untuk waspada terhadap Pelepasan ketakutan batin, kabut perlahan tersibak. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 19,
+    "slug": "19-the-sun",
+    "name": "The Sun",
+    "name_id": "Mentari Kejayaan",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/19-the-sun.webp",
+    "keywords_upright": [
+      "Kebahagiaan hakiki",
+      "kejelasan terang",
+      "vitalitas hidup"
+    ],
+    "keywords_reversed": [
+      "Awan mendung sesaat",
+      "antusiasme yang tertahan"
+    ],
+    "fallback_upright": "Energi The Sun (Mentari Kejayaan) membawa pesan kejernihan: Kebahagiaan hakiki, kejelasan terang, vitalitas hidup. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The Sun (Mentari Kejayaan) mengingatkanmu untuk waspada terhadap Awan mendung sesaat, antusiasme yang tertahan. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 20,
+    "slug": "20-judgement",
+    "name": "Judgement",
+    "name_id": "Panggilan Jiwa",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/20-judgement.webp",
+    "keywords_upright": [
+      "Pembaruan hidup",
+      "ampunan masa lalu",
+      "panggilan nurani"
+    ],
+    "keywords_reversed": [
+      "Keraguan pada diri sendiri",
+      "penyesalan masa lalu",
+      "lambat sadar"
+    ],
+    "fallback_upright": "Energi Judgement (Panggilan Jiwa) membawa pesan kejernihan: Pembaruan hidup, ampunan masa lalu, panggilan nurani. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, Judgement (Panggilan Jiwa) mengingatkanmu untuk waspada terhadap Keraguan pada diri sendiri, penyesalan masa lalu, lambat sadar. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 21,
+    "slug": "21-the-world",
+    "name": "The World",
+    "name_id": "Kesempurnaan Semesta",
+    "arcana": "Major",
+    "suit": null,
+    "image": "/cards/21-the-world.webp",
+    "keywords_upright": [
+      "Pencapaian paripurna",
+      "keutuhan siklus",
+      "keberhasilan"
+    ],
+    "keywords_reversed": [
+      "Tujuan belum tuntas",
+      "keterikatan pada akhir",
+      "siklus menggantung"
+    ],
+    "fallback_upright": "Energi The World (Kesempurnaan Semesta) membawa pesan kejernihan: Pencapaian paripurna, keutuhan siklus, keberhasilan. Dengarkan dorongan terbaik dari dalam dirimu untuk melangkah maju.",
+    "fallback_reversed": "Dalam posisi terbalik, The World (Kesempurnaan Semesta) mengingatkanmu untuk waspada terhadap Tujuan belum tuntas, keterikatan pada akhir, siklus menggantung. Berhentilah sejenak menata pijakan sebelum memutuskan."
+  },
+  {
+    "id": 22,
+    "slug": "22-ace-of-wands",
+    "name": "Ace of Wands",
+    "name_id": "Ace Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/22-ace-of-wands.webp",
+    "keywords_upright": [
+      "Percikan ide baru",
+      "inisiatif membara",
+      "antusiasme"
+    ],
+    "keywords_reversed": [
+      "Kehilangan gairah",
+      "penundaan proyek",
+      "ragu bertindak"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Ace of Wands (Ace Tongkat) menunjukkan bahwa Percikan ide baru, inisiatif membara, antusiasme. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Ace of Wands (Ace Tongkat) memberi peringatan adanya Kehilangan gairah, penundaan proyek, ragu bertindak. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 23,
+    "slug": "23-two-of-wands",
+    "name": "Two of Wands",
+    "name_id": "Two Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/23-two-of-wands.webp",
+    "keywords_upright": [
+      "Perencanaan masa depan",
+      "visi jauh",
+      "langkah berani"
+    ],
+    "keywords_reversed": [
+      "Rasa takut melangkah",
+      "rencana goyah",
+      "terjebak zona nyaman"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Two of Wands (Two Tongkat) menunjukkan bahwa Perencanaan masa depan, visi jauh, langkah berani. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Two of Wands (Two Tongkat) memberi peringatan adanya Rasa takut melangkah, rencana goyah, terjebak zona nyaman. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 24,
+    "slug": "24-three-of-wands",
+    "name": "Three of Wands",
+    "name_id": "Three Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/24-three-of-wands.webp",
+    "keywords_upright": [
+      "Ekspansi usaha",
+      "hasil awal terlihat",
+      "kerja sama"
+    ],
+    "keywords_reversed": [
+      "Rintangan tak terduga",
+      "keterlambatan hasil",
+      "visi terhambat"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Three of Wands (Three Tongkat) menunjukkan bahwa Ekspansi usaha, hasil awal terlihat, kerja sama. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Three of Wands (Three Tongkat) memberi peringatan adanya Rintangan tak terduga, keterlambatan hasil, visi terhambat. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 25,
+    "slug": "25-four-of-wands",
+    "name": "Four of Wands",
+    "name_id": "Four Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/25-four-of-wands.webp",
+    "keywords_upright": [
+      "Perayaan hangat",
+      "fondasi keluarga",
+      "rasa aman"
+    ],
+    "keywords_reversed": [
+      "Ketegangan rumah tangga",
+      "perayaan tertunda",
+      "rasa tidak tenang"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Four of Wands (Four Tongkat) menunjukkan bahwa Perayaan hangat, fondasi keluarga, rasa aman. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Four of Wands (Four Tongkat) memberi peringatan adanya Ketegangan rumah tangga, perayaan tertunda, rasa tidak tenang. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 26,
+    "slug": "26-five-of-wands",
+    "name": "Five of Wands",
+    "name_id": "Five Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/26-five-of-wands.webp",
+    "keywords_upright": [
+      "Kompetisi sengit",
+      "perdebatan pandangan",
+      "gesekan"
+    ],
+    "keywords_reversed": [
+      "Penyelesaian konflik",
+      "kompromi bijak",
+      "hindari drama"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Five of Wands (Five Tongkat) menunjukkan bahwa Kompetisi sengit, perdebatan pandangan, gesekan. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Five of Wands (Five Tongkat) memberi peringatan adanya Penyelesaian konflik, kompromi bijak, hindari drama. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 27,
+    "slug": "27-six-of-wands",
+    "name": "Six of Wands",
+    "name_id": "Six Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/27-six-of-wands.webp",
+    "keywords_upright": [
+      "Kemenangan diakui",
+      "kepercayaan diri",
+      "kehormatan"
+    ],
+    "keywords_reversed": [
+      "Kekecewaan publik",
+      "arogansi ego",
+      "pengakuan yang surut"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Six of Wands (Six Tongkat) menunjukkan bahwa Kemenangan diakui, kepercayaan diri, kehormatan. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Six of Wands (Six Tongkat) memberi peringatan adanya Kekecewaan publik, arogansi ego, pengakuan yang surut. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 28,
+    "slug": "28-seven-of-wands",
+    "name": "Seven of Wands",
+    "name_id": "Seven Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/28-seven-of-wands.webp",
+    "keywords_upright": [
+      "Mempertahankan prinsip",
+      "keteguhan sikap",
+      "pantang mundur"
+    ],
+    "keywords_reversed": [
+      "Kelelahan berjuang",
+      "kewalahan beban",
+      "menyerah pada tekanan"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Seven of Wands (Seven Tongkat) menunjukkan bahwa Mempertahankan prinsip, keteguhan sikap, pantang mundur. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Seven of Wands (Seven Tongkat) memberi peringatan adanya Kelelahan berjuang, kewalahan beban, menyerah pada tekanan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 29,
+    "slug": "29-eight-of-wands",
+    "name": "Eight of Wands",
+    "name_id": "Eight Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/29-eight-of-wands.webp",
+    "keywords_upright": [
+      "Kemajuan pesat",
+      "komunikasi lancar",
+      "momentum kilat"
+    ],
+    "keywords_reversed": [
+      "Penundaan mendadak",
+      "berita tertahan",
+      "langkah terburu-buru"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Eight of Wands (Eight Tongkat) menunjukkan bahwa Kemajuan pesat, komunikasi lancar, momentum kilat. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Eight of Wands (Eight Tongkat) memberi peringatan adanya Penundaan mendadak, berita tertahan, langkah terburu-buru. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 30,
+    "slug": "30-nine-of-wands",
+    "name": "Nine of Wands",
+    "name_id": "Nine Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/30-nine-of-wands.webp",
+    "keywords_upright": [
+      "Daya tahan tinggi",
+      "kewaspadaan akhir",
+      "hampir sampai"
+    ],
+    "keywords_reversed": [
+      "Kelelahan kronis",
+      "defensif berlebih",
+      "trauma masa lalu"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Nine of Wands (Nine Tongkat) menunjukkan bahwa Daya tahan tinggi, kewaspadaan akhir, hampir sampai. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Nine of Wands (Nine Tongkat) memberi peringatan adanya Kelelahan kronis, defensif berlebih, trauma masa lalu. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 31,
+    "slug": "31-ten-of-wands",
+    "name": "Ten of Wands",
+    "name_id": "Ten Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/31-ten-of-wands.webp",
+    "keywords_upright": [
+      "Beban tanggung jawab berat",
+      "tekanan kerja",
+      "kelelahan"
+    ],
+    "keywords_reversed": [
+      "Belajar mendelegasikan beban",
+      "pelepasan stres",
+      "letih tak tertahankan"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Ten of Wands (Ten Tongkat) menunjukkan bahwa Beban tanggung jawab berat, tekanan kerja, kelelahan. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Ten of Wands (Ten Tongkat) memberi peringatan adanya Belajar mendelegasikan beban, pelepasan stres, letih tak tertahankan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 32,
+    "slug": "32-page-of-wands",
+    "name": "Page of Wands",
+    "name_id": "Page Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/32-page-of-wands.webp",
+    "keywords_upright": [
+      "Kabar inspiratif",
+      "eksplorasi minat",
+      "jiwa petualang"
+    ],
+    "keywords_reversed": [
+      "Kabar mengecewakan",
+      "kurang fokus",
+      "semangat sesaat"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Page of Wands (Page Tongkat) menunjukkan bahwa Kabar inspiratif, eksplorasi minat, jiwa petualang. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Page of Wands (Page Tongkat) memberi peringatan adanya Kabar mengecewakan, kurang fokus, semangat sesaat. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 33,
+    "slug": "33-knight-of-wands",
+    "name": "Knight of Wands",
+    "name_id": "Knight Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/33-knight-of-wands.webp",
+    "keywords_upright": [
+      "Aksi impulsif bertenaga",
+      "mengejar impian",
+      "antusias"
+    ],
+    "keywords_reversed": [
+      "Kemarahan ceroboh",
+      "frustrasi",
+      "kehilangan arah aksi"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Knight of Wands (Knight Tongkat) menunjukkan bahwa Aksi impulsif bertenaga, mengejar impian, antusias. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Knight of Wands (Knight Tongkat) memberi peringatan adanya Kemarahan ceroboh, frustrasi, kehilangan arah aksi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 34,
+    "slug": "34-queen-of-wands",
+    "name": "Queen of Wands",
+    "name_id": "Queen Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/34-queen-of-wands.webp",
+    "keywords_upright": [
+      "Karisma hangat",
+      "kemandirian sejati",
+      "keberanian anggun"
+    ],
+    "keywords_reversed": [
+      "Kecemburuan",
+      "tuntutan tinggi",
+      "kehilangan rasa percaya diri"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada Queen of Wands (Queen Tongkat) menunjukkan bahwa Karisma hangat, kemandirian sejati, keberanian anggun. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Queen of Wands (Queen Tongkat) memberi peringatan adanya Kecemburuan, tuntutan tinggi, kehilangan rasa percaya diri. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 35,
+    "slug": "35-king-of-wands",
+    "name": "King of Wands",
+    "name_id": "King Tongkat",
+    "arcana": "Minor",
+    "suit": "Wands",
+    "image": "/cards/35-king-of-wands.webp",
+    "keywords_upright": [
+      "Kepemimpinan visioner",
+      "inspirator ulung",
+      "eksekusi matang"
+    ],
+    "keywords_reversed": [
+      "Otoriter agresif",
+      "ekspektasi tak realistis",
+      "dominasi kaku"
+    ],
+    "fallback_upright": "Energi elemen Api & Aksi pada King of Wands (King Tongkat) menunjukkan bahwa Kepemimpinan visioner, inspirator ulung, eksekusi matang. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, King of Wands (King Tongkat) memberi peringatan adanya Otoriter agresif, ekspektasi tak realistis, dominasi kaku. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 36,
+    "slug": "36-ace-of-cups",
+    "name": "Ace of Cups",
+    "name_id": "Ace Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/36-ace-of-cups.webp",
+    "keywords_upright": [
+      "Mekarnya cinta baru",
+      "intuisi meluap",
+      "kedamaian batin"
+    ],
+    "keywords_reversed": [
+      "Emosi tersumbat",
+      "patah hati lama",
+      "rasa hampa"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Ace of Cups (Ace Cawan) menunjukkan bahwa Mekarnya cinta baru, intuisi meluap, kedamaian batin. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Ace of Cups (Ace Cawan) memberi peringatan adanya Emosi tersumbat, patah hati lama, rasa hampa. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 37,
+    "slug": "37-two-of-cups",
+    "name": "Two of Cups",
+    "name_id": "Two Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/37-two-of-cups.webp",
+    "keywords_upright": [
+      "Koneksi dua jiwa",
+      "kemitraan selaras",
+      "saling memahami"
+    ],
+    "keywords_reversed": [
+      "Miskomunikasi",
+      "ketidakseimbangan relasi",
+      "ego mendominasi"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Two of Cups (Two Cawan) menunjukkan bahwa Koneksi dua jiwa, kemitraan selaras, saling memahami. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Two of Cups (Two Cawan) memberi peringatan adanya Miskomunikasi, ketidakseimbangan relasi, ego mendominasi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 38,
+    "slug": "38-three-of-cups",
+    "name": "Three of Cups",
+    "name_id": "Three Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/38-three-of-cups.webp",
+    "keywords_upright": [
+      "Reuni sahabat",
+      "persahabatan tulus",
+      "sukacita bersama"
+    ],
+    "keywords_reversed": [
+      "Isolasi sosial",
+      "gosip tak sedap",
+      "pesta berlebihan"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Three of Cups (Three Cawan) menunjukkan bahwa Reuni sahabat, persahabatan tulus, sukacita bersama. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Three of Cups (Three Cawan) memberi peringatan adanya Isolasi sosial, gosip tak sedap, pesta berlebihan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 39,
+    "slug": "39-four-of-cups",
+    "name": "Four of Cups",
+    "name_id": "Four Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/39-four-of-cups.webp",
+    "keywords_upright": [
+      "Kejenuhan batin",
+      "merenung diam",
+      "mengabaikan berkah"
+    ],
+    "keywords_reversed": [
+      "Melihat peluang baru",
+      "bangkit dari rasa bosan",
+      "keterbukaan"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Four of Cups (Four Cawan) menunjukkan bahwa Kejenuhan batin, merenung diam, mengabaikan berkah. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Four of Cups (Four Cawan) memberi peringatan adanya Melihat peluang baru, bangkit dari rasa bosan, keterbukaan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 40,
+    "slug": "40-five-of-cups",
+    "name": "Five of Cups",
+    "name_id": "Five Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/40-five-of-cups.webp",
+    "keywords_upright": [
+      "Duka kehilangan",
+      "penyesalan mendalam",
+      "fokus pada yang hilang"
+    ],
+    "keywords_reversed": [
+      "Mulai menerima kenyataan",
+      "melihat cawan yang masih berdiri",
+      "pemulihan"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Five of Cups (Five Cawan) menunjukkan bahwa Duka kehilangan, penyesalan mendalam, fokus pada yang hilang. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Five of Cups (Five Cawan) memberi peringatan adanya Mulai menerima kenyataan, melihat cawan yang masih berdiri, pemulihan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 41,
+    "slug": "41-six-of-cups",
+    "name": "Six of Cups",
+    "name_id": "Six Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/41-six-of-cups.webp",
+    "keywords_upright": [
+      "Kenangan manis",
+      "ketulusan masa lalu",
+      "nostalgia hangat"
+    ],
+    "keywords_reversed": [
+      "Terjebak masa lalu",
+      "masa kecil belum selesai",
+      "enggan bertumbuh"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Six of Cups (Six Cawan) menunjukkan bahwa Kenangan manis, ketulusan masa lalu, nostalgia hangat. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Six of Cups (Six Cawan) memberi peringatan adanya Terjebak masa lalu, masa kecil belum selesai, enggan bertumbuh. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 42,
+    "slug": "42-seven-of-cups",
+    "name": "Seven of Cups",
+    "name_id": "Seven Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/42-seven-of-cups.webp",
+    "keywords_upright": [
+      "Banyak angan-angan",
+      "ilusi godaan",
+      "perlunya memilih nyata"
+    ],
+    "keywords_reversed": [
+      "Kejelasan keputusan",
+      "membuang ilusi",
+      "komitmen realistis"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Seven of Cups (Seven Cawan) menunjukkan bahwa Banyak angan-angan, ilusi godaan, perlunya memilih nyata. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Seven of Cups (Seven Cawan) memberi peringatan adanya Kejelasan keputusan, membuang ilusi, komitmen realistis. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 43,
+    "slug": "43-eight-of-cups",
+    "name": "Eight of Cups",
+    "name_id": "Eight Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/43-eight-of-cups.webp",
+    "keywords_upright": [
+      "Meninggalkan yang usang",
+      "pencarian makna lebih dalam"
+    ],
+    "keywords_reversed": [
+      "Takut melangkah pergi",
+      "bertahan dalam kepalsuan",
+      "keraguan batin"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Eight of Cups (Eight Cawan) menunjukkan bahwa Meninggalkan yang usang, pencarian makna lebih dalam. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Eight of Cups (Eight Cawan) memberi peringatan adanya Takut melangkah pergi, bertahan dalam kepalsuan, keraguan batin. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 44,
+    "slug": "44-nine-of-cups",
+    "name": "Nine of Cups",
+    "name_id": "Nine Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/44-nine-of-cups.webp",
+    "keywords_upright": [
+      "Kepuasan batin",
+      "rasa syukur",
+      "kebahagiaan terwujud"
+    ],
+    "keywords_reversed": [
+      "Ketidakpuasan tersembunyi",
+      "kepuasan semu",
+      "kesombongan materi"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Nine of Cups (Nine Cawan) menunjukkan bahwa Kepuasan batin, rasa syukur, kebahagiaan terwujud. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Nine of Cups (Nine Cawan) memberi peringatan adanya Ketidakpuasan tersembunyi, kepuasan semu, kesombongan materi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 45,
+    "slug": "45-ten-of-cups",
+    "name": "Ten of Cups",
+    "name_id": "Ten Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/45-ten-of-cups.webp",
+    "keywords_upright": [
+      "Kebahagiaan keluarga abadi",
+      "cinta paripurna",
+      "damai sejati"
+    ],
+    "keywords_reversed": [
+      "Perpecahan keluarga",
+      "ketidakharmonisan rumah",
+      "friksi batin"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Ten of Cups (Ten Cawan) menunjukkan bahwa Kebahagiaan keluarga abadi, cinta paripurna, damai sejati. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Ten of Cups (Ten Cawan) memberi peringatan adanya Perpecahan keluarga, ketidakharmonisan rumah, friksi batin. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 46,
+    "slug": "46-page-of-cups",
+    "name": "Page of Cups",
+    "name_id": "Page Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/46-page-of-cups.webp",
+    "keywords_upright": [
+      "Pesan penuh kasih",
+      "intuisi kreatif lembut",
+      "kejujuran hati"
+    ],
+    "keywords_reversed": [
+      "Ketidakstabilan emosi",
+      "kabar muram",
+      "kekanak-kanakan"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Page of Cups (Page Cawan) menunjukkan bahwa Pesan penuh kasih, intuisi kreatif lembut, kejujuran hati. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Page of Cups (Page Cawan) memberi peringatan adanya Ketidakstabilan emosi, kabar muram, kekanak-kanakan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 47,
+    "slug": "47-knight-of-cups",
+    "name": "Knight of Cups",
+    "name_id": "Knight Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/47-knight-of-cups.webp",
+    "keywords_upright": [
+      "Pembawa pesan cinta",
+      "romantisme idealis",
+      "pesona santun"
+    ],
+    "keywords_reversed": [
+      "Romantisme berlebihan",
+      "harapan palsu",
+      "suasana hati labil"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Knight of Cups (Knight Cawan) menunjukkan bahwa Pembawa pesan cinta, romantisme idealis, pesona santun. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Knight of Cups (Knight Cawan) memberi peringatan adanya Romantisme berlebihan, harapan palsu, suasana hati labil. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 48,
+    "slug": "48-queen-of-cups",
+    "name": "Queen of Cups",
+    "name_id": "Queen Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/48-queen-of-cups.webp",
+    "keywords_upright": [
+      "Empati mendalam",
+      "keibuan lembut",
+      "penyembuh rasa"
+    ],
+    "keywords_reversed": [
+      "Ketergantungan emosional",
+      "manipulasi rasa",
+      "rentan terluka"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada Queen of Cups (Queen Cawan) menunjukkan bahwa Empati mendalam, keibuan lembut, penyembuh rasa. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Queen of Cups (Queen Cawan) memberi peringatan adanya Ketergantungan emosional, manipulasi rasa, rentan terluka. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 49,
+    "slug": "49-king-of-cups",
+    "name": "King of Cups",
+    "name_id": "King Cawan",
+    "arcana": "Minor",
+    "suit": "Cups",
+    "image": "/cards/49-king-of-cups.webp",
+    "keywords_upright": [
+      "Kematangan emosional",
+      "kebijaksanaan batin",
+      "penenang badai"
+    ],
+    "keywords_reversed": [
+      "Emosi dingin menekan rasa",
+      "manipulasi psikologis",
+      "badai batin"
+    ],
+    "fallback_upright": "Energi elemen Air & Emosi pada King of Cups (King Cawan) menunjukkan bahwa Kematangan emosional, kebijaksanaan batin, penenang badai. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, King of Cups (King Cawan) memberi peringatan adanya Emosi dingin menekan rasa, manipulasi psikologis, badai batin. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 50,
+    "slug": "50-ace-of-swords",
+    "name": "Ace of Swords",
+    "name_id": "Ace Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/50-ace-of-swords.webp",
+    "keywords_upright": [
+      "Kejelasan pikiran tajam",
+      "terobosan logika",
+      "kebenaran mutlak"
+    ],
+    "keywords_reversed": [
+      "Kekacauan berpikir",
+      "salah paham logika",
+      "ketajaman menyakiti"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Ace of Swords (Ace Pedang) menunjukkan bahwa Kejelasan pikiran tajam, terobosan logika, kebenaran mutlak. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Ace of Swords (Ace Pedang) memberi peringatan adanya Kekacauan berpikir, salah paham logika, ketajaman menyakiti. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 51,
+    "slug": "51-two-of-swords",
+    "name": "Two of Swords",
+    "name_id": "Two Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/51-two-of-swords.webp",
+    "keywords_upright": [
+      "Kebuntuan pilihan",
+      "menutup mata pada fakta",
+      "kompromi rapuh"
+    ],
+    "keywords_reversed": [
+      "Kebingungan teratasi",
+      "berani melihat kenyataan",
+      "mengambil keputusan"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Two of Swords (Two Pedang) menunjukkan bahwa Kebuntuan pilihan, menutup mata pada fakta, kompromi rapuh. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Two of Swords (Two Pedang) memberi peringatan adanya Kebingungan teratasi, berani melihat kenyataan, mengambil keputusan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 52,
+    "slug": "52-three-of-swords",
+    "name": "Three of Swords",
+    "name_id": "Three Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/52-three-of-swords.webp",
+    "keywords_upright": [
+      "Luka sayatan hati",
+      "kepedihan realitas",
+      "penolakan pahit"
+    ],
+    "keywords_reversed": [
+      "Proses penyembuhan luka",
+      "melepaskan kepedihan",
+      "damai yang terbit"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Three of Swords (Three Pedang) menunjukkan bahwa Luka sayatan hati, kepedihan realitas, penolakan pahit. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Three of Swords (Three Pedang) memberi peringatan adanya Proses penyembuhan luka, melepaskan kepedihan, damai yang terbit. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 53,
+    "slug": "53-four-of-swords",
+    "name": "Four of Swords",
+    "name_id": "Four Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/53-four-of-swords.webp",
+    "keywords_upright": [
+      "Istirahat pemulihan pikiran",
+      "meditasi hening",
+      "jeda tempur"
+    ],
+    "keywords_reversed": [
+      "Kelelahan berlanjut",
+      "dipaksa bangkit terlalu cepat",
+      "insomnia batin"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Four of Swords (Four Pedang) menunjukkan bahwa Istirahat pemulihan pikiran, meditasi hening, jeda tempur. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Four of Swords (Four Pedang) memberi peringatan adanya Kelelahan berlanjut, dipaksa bangkit terlalu cepat, insomnia batin. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 54,
+    "slug": "54-five-of-swords",
+    "name": "Five of Swords",
+    "name_id": "Five Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/54-five-of-swords.webp",
+    "keywords_upright": [
+      "Konflik ego menyakitkan",
+      "kemenangan hampa",
+      "rasa kalah"
+    ],
+    "keywords_reversed": [
+      "Menyudahi perselisihan",
+      "mengubur dendam",
+      "belajar dari kesalahan"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Five of Swords (Five Pedang) menunjukkan bahwa Konflik ego menyakitkan, kemenangan hampa, rasa kalah. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Five of Swords (Five Pedang) memberi peringatan adanya Menyudahi perselisihan, mengubur dendam, belajar dari kesalahan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 55,
+    "slug": "55-six-of-swords",
+    "name": "Six of Swords",
+    "name_id": "Six Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/55-six-of-swords.webp",
+    "keywords_upright": [
+      "Peralihan menuju tenang",
+      "meninggalkan badai",
+      "perjalanan sembuh"
+    ],
+    "keywords_reversed": [
+      "Muatan luka masa lalu terbawa",
+      "perjalanan tertunda",
+      "hambatan adaptasi"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Six of Swords (Six Pedang) menunjukkan bahwa Peralihan menuju tenang, meninggalkan badai, perjalanan sembuh. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Six of Swords (Six Pedang) memberi peringatan adanya Muatan luka masa lalu terbawa, perjalanan tertunda, hambatan adaptasi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 56,
+    "slug": "56-seven-of-swords",
+    "name": "Seven of Swords",
+    "name_id": "Seven Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/56-seven-of-swords.webp",
+    "keywords_upright": [
+      "Strategi tersembunyi",
+      "kecerdikan taktis",
+      "kewaspadaan"
+    ],
+    "keywords_reversed": [
+      "Rencana terbongkar",
+      "beban nurani",
+      "kejujuran yang menuntut"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Seven of Swords (Seven Pedang) menunjukkan bahwa Strategi tersembunyi, kecerdikan taktis, kewaspadaan. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Seven of Swords (Seven Pedang) memberi peringatan adanya Rencana terbongkar, beban nurani, kejujuran yang menuntut. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 57,
+    "slug": "57-eight-of-swords",
+    "name": "Eight of Swords",
+    "name_id": "Eight Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/57-eight-of-swords.webp",
+    "keywords_upright": [
+      "Merasa terpenjara pikiran sendiri",
+      "ketidakberdayaan semu"
+    ],
+    "keywords_reversed": [
+      "Membuka mata pada jalan keluar",
+      "kebebasan mental",
+      "keberanian"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Eight of Swords (Eight Pedang) menunjukkan bahwa Merasa terpenjara pikiran sendiri, ketidakberdayaan semu. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Eight of Swords (Eight Pedang) memberi peringatan adanya Membuka mata pada jalan keluar, kebebasan mental, keberanian. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 58,
+    "slug": "58-nine-of-swords",
+    "name": "Nine of Swords",
+    "name_id": "Nine Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/58-nine-of-swords.webp",
+    "keywords_upright": [
+      "Kecemasan malam hari",
+      "insomnia beban pikiran",
+      "rasa bersalah"
+    ],
+    "keywords_reversed": [
+      "Kecemasan mulai reda",
+      "harapan fajar",
+      "menyadari ketakutan berlebih"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Nine of Swords (Nine Pedang) menunjukkan bahwa Kecemasan malam hari, insomnia beban pikiran, rasa bersalah. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Nine of Swords (Nine Pedang) memberi peringatan adanya Kecemasan mulai reda, harapan fajar, menyadari ketakutan berlebih. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 59,
+    "slug": "59-ten-of-swords",
+    "name": "Ten of Swords",
+    "name_id": "Ten Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/59-ten-of-swords.webp",
+    "keywords_upright": [
+      "Titik nadir kepedihan",
+      "akhir sebuah derita",
+      "fajar baru menanti"
+    ],
+    "keywords_reversed": [
+      "Kebangkitan dari keterpurukan",
+      "pemulihan dari kehancuran total"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Ten of Swords (Ten Pedang) menunjukkan bahwa Titik nadir kepedihan, akhir sebuah derita, fajar baru menanti. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Ten of Swords (Ten Pedang) memberi peringatan adanya Kebangkitan dari keterpurukan, pemulihan dari kehancuran total. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 60,
+    "slug": "60-page-of-swords",
+    "name": "Page of Swords",
+    "name_id": "Page Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/60-page-of-swords.webp",
+    "keywords_upright": [
+      "Keingintahuan tajam",
+      "pengamat waspada",
+      "haus wawasan"
+    ],
+    "keywords_reversed": [
+      "Kecurigaan paranoid",
+      "kata-kata menusuk",
+      "informasi menyesatkan"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Page of Swords (Page Pedang) menunjukkan bahwa Keingintahuan tajam, pengamat waspada, haus wawasan. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Page of Swords (Page Pedang) memberi peringatan adanya Kecurigaan paranoid, kata-kata menusuk, informasi menyesatkan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 61,
+    "slug": "61-knight-of-swords",
+    "name": "Knight of Swords",
+    "name_id": "Knight Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/61-knight-of-swords.webp",
+    "keywords_upright": [
+      "Pikiran tajam berani",
+      "serangan kilat",
+      "tekad tanpa gentar"
+    ],
+    "keywords_reversed": [
+      "Kekasaran verbal",
+      "terburu-buru tanpa etika",
+      "agresi tak terkendali"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Knight of Swords (Knight Pedang) menunjukkan bahwa Pikiran tajam berani, serangan kilat, tekad tanpa gentar. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Knight of Swords (Knight Pedang) memberi peringatan adanya Kekasaran verbal, terburu-buru tanpa etika, agresi tak terkendali. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 62,
+    "slug": "62-queen-of-swords",
+    "name": "Queen of Swords",
+    "name_id": "Queen Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/62-queen-of-swords.webp",
+    "keywords_upright": [
+      "Kecerdasan mandiri",
+      "objektivitas jujur",
+      "batas diri yang tegas"
+    ],
+    "keywords_reversed": [
+      "Kekejaman kata-kata",
+      "kepahitan hati",
+      "jarak emosi yang dingin"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada Queen of Swords (Queen Pedang) menunjukkan bahwa Kecerdasan mandiri, objektivitas jujur, batas diri yang tegas. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Queen of Swords (Queen Pedang) memberi peringatan adanya Kekejaman kata-kata, kepahitan hati, jarak emosi yang dingin. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 63,
+    "slug": "63-king-of-swords",
+    "name": "King of Swords",
+    "name_id": "King Pedang",
+    "arcana": "Minor",
+    "suit": "Swords",
+    "image": "/cards/63-king-of-swords.webp",
+    "keywords_upright": [
+      "Otoritas intelektual",
+      "kejujuran hukum",
+      "ketegasan bijaksana"
+    ],
+    "keywords_reversed": [
+      "Penyalahgunaan kuasa pikiran",
+      "kekakuan logika",
+      "ketidakadilan dingin"
+    ],
+    "fallback_upright": "Energi elemen Udara & Pikiran pada King of Swords (King Pedang) menunjukkan bahwa Otoritas intelektual, kejujuran hukum, ketegasan bijaksana. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, King of Swords (King Pedang) memberi peringatan adanya Penyalahgunaan kuasa pikiran, kekakuan logika, ketidakadilan dingin. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 64,
+    "slug": "64-ace-of-pentacles",
+    "name": "Ace of Pentacles",
+    "name_id": "Ace Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/64-ace-of-pentacles.webp",
+    "keywords_upright": [
+      "Peluang rezeki nyata",
+      "bibit kemakmuran",
+      "kestabilan finansial"
+    ],
+    "keywords_reversed": [
+      "Peluang finansial terlewat",
+      "investasi macet",
+      "keraguan materi"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Ace of Pentacles (Ace Koin) menunjukkan bahwa Peluang rezeki nyata, bibit kemakmuran, kestabilan finansial. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Ace of Pentacles (Ace Koin) memberi peringatan adanya Peluang finansial terlewat, investasi macet, keraguan materi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 65,
+    "slug": "65-two-of-pentacles",
+    "name": "Two of Pentacles",
+    "name_id": "Two Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/65-two-of-pentacles.webp",
+    "keywords_upright": [
+      "Keseimbangan adaptif",
+      "mengatur arus kas dan waktu fleksibel"
+    ],
+    "keywords_reversed": [
+      "Kewalahan multitasking",
+      "ketidakstabilan keuangan",
+      "salah prioritas"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Two of Pentacles (Two Koin) menunjukkan bahwa Keseimbangan adaptif, mengatur arus kas dan waktu fleksibel. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Two of Pentacles (Two Koin) memberi peringatan adanya Kewalahan multitasking, ketidakstabilan keuangan, salah prioritas. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 66,
+    "slug": "66-three-of-pentacles",
+    "name": "Three of Pentacles",
+    "name_id": "Three Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/66-three-of-pentacles.webp",
+    "keywords_upright": [
+      "Keahlian kolaborasi",
+      "pengakuan mutu karya",
+      "fondasi proyek"
+    ],
+    "keywords_reversed": [
+      "Kurang koordinasi tim",
+      "keahlian terabaikan",
+      "kritik menjatuhkan"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Three of Pentacles (Three Koin) menunjukkan bahwa Keahlian kolaborasi, pengakuan mutu karya, fondasi proyek. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Three of Pentacles (Three Koin) memberi peringatan adanya Kurang koordinasi tim, keahlian terabaikan, kritik menjatuhkan. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 67,
+    "slug": "67-four-of-pentacles",
+    "name": "Four of Pentacles",
+    "name_id": "Four Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/67-four-of-pentacles.webp",
+    "keywords_upright": [
+      "Menjaga aset",
+      "keamanan finansial",
+      "stabilitas konservatif"
+    ],
+    "keywords_reversed": [
+      "Keserakahan posesif",
+      "takut miskin berlebih",
+      "kekakuan aset"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Four of Pentacles (Four Koin) menunjukkan bahwa Menjaga aset, keamanan finansial, stabilitas konservatif. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Four of Pentacles (Four Koin) memberi peringatan adanya Keserakahan posesif, takut miskin berlebih, kekakuan aset. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 68,
+    "slug": "68-five-of-pentacles",
+    "name": "Five of Pentacles",
+    "name_id": "Five Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/68-five-of-pentacles.webp",
+    "keywords_upright": [
+      "Kekurangan materi sesaat",
+      "rasa terasing",
+      "ujian ketahanan"
+    ],
+    "keywords_reversed": [
+      "Bantuan mulai datang",
+      "menemukan perlindungan",
+      "pemulihan ekonomi"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Five of Pentacles (Five Koin) menunjukkan bahwa Kekurangan materi sesaat, rasa terasing, ujian ketahanan. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Five of Pentacles (Five Koin) memberi peringatan adanya Bantuan mulai datang, menemukan perlindungan, pemulihan ekonomi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 69,
+    "slug": "69-six-of-pentacles",
+    "name": "Six of Pentacles",
+    "name_id": "Six Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/69-six-of-pentacles.webp",
+    "keywords_upright": [
+      "Kemurahan hati berbagi",
+      "keadilan timbal balik",
+      "berkah rezeki"
+    ],
+    "keywords_reversed": [
+      "Utang macet",
+      "kemurahan hati dimanfaatkan",
+      "ketimpangan kuasa"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Six of Pentacles (Six Koin) menunjukkan bahwa Kemurahan hati berbagi, keadilan timbal balik, berkah rezeki. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Six of Pentacles (Six Koin) memberi peringatan adanya Utang macet, kemurahan hati dimanfaatkan, ketimpangan kuasa. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 70,
+    "slug": "70-seven-of-pentacles",
+    "name": "Seven of Pentacles",
+    "name_id": "Seven Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/70-seven-of-pentacles.webp",
+    "keywords_upright": [
+      "Menunggu hasil panen",
+      "evaluasi kerja keras",
+      "kesabaran investasi"
+    ],
+    "keywords_reversed": [
+      "Kekecewaan lambatnya hasil",
+      "keputusasaan bertani usaha"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Seven of Pentacles (Seven Koin) menunjukkan bahwa Menunggu hasil panen, evaluasi kerja keras, kesabaran investasi. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Seven of Pentacles (Seven Koin) memberi peringatan adanya Kekecewaan lambatnya hasil, keputusasaan bertani usaha. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 71,
+    "slug": "71-eight-of-pentacles",
+    "name": "Eight of Pentacles",
+    "name_id": "Eight Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/71-eight-of-pentacles.webp",
+    "keywords_upright": [
+      "Ketekunan mengasah skill",
+      "dedikasi detail",
+      "keahlian meningkat"
+    ],
+    "keywords_reversed": [
+      "Kerja tanpa arah",
+      "kejenuhan rutinitas",
+      "jalan pintas berisiko"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Eight of Pentacles (Eight Koin) menunjukkan bahwa Ketekunan mengasah skill, dedikasi detail, keahlian meningkat. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Eight of Pentacles (Eight Koin) memberi peringatan adanya Kerja tanpa arah, kejenuhan rutinitas, jalan pintas berisiko. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 72,
+    "slug": "72-nine-of-pentacles",
+    "name": "Nine of Pentacles",
+    "name_id": "Nine Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/72-nine-of-pentacles.webp",
+    "keywords_upright": [
+      "Kemandirian finansial",
+      "kenikmatan hasil karya",
+      "rasa anggun mandiri"
+    ],
+    "keywords_reversed": [
+      "Pemborosan gengsi",
+      "isolasi dalam kemewahan",
+      "ketergantungan tersembunyi"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Nine of Pentacles (Nine Koin) menunjukkan bahwa Kemandirian finansial, kenikmatan hasil karya, rasa anggun mandiri. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Nine of Pentacles (Nine Koin) memberi peringatan adanya Pemborosan gengsi, isolasi dalam kemewahan, ketergantungan tersembunyi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 73,
+    "slug": "73-ten-of-pentacles",
+    "name": "Ten of Pentacles",
+    "name_id": "Ten Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/73-ten-of-pentacles.webp",
+    "keywords_upright": [
+      "Kemakmuran warisan",
+      "stabilitas jangka panjang",
+      "kekayaan keluarga"
+    ],
+    "keywords_reversed": [
+      "Masalah warisan",
+      "kegagalan finansial jangka panjang",
+      "beban tradisi"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Ten of Pentacles (Ten Koin) menunjukkan bahwa Kemakmuran warisan, stabilitas jangka panjang, kekayaan keluarga. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Ten of Pentacles (Ten Koin) memberi peringatan adanya Masalah warisan, kegagalan finansial jangka panjang, beban tradisi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 74,
+    "slug": "74-page-of-pentacles",
+    "name": "Page of Pentacles",
+    "name_id": "Page Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/74-page-of-pentacles.webp",
+    "keywords_upright": [
+      "Peluang belajar baru",
+      "niat wirausaha nyata",
+      "kabar baik karier"
+    ],
+    "keywords_reversed": [
+      "Kemalasan",
+      "peluang karier tersia-siakan",
+      "kurang dedikasi"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Page of Pentacles (Page Koin) menunjukkan bahwa Peluang belajar baru, niat wirausaha nyata, kabar baik karier. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Page of Pentacles (Page Koin) memberi peringatan adanya Kemalasan, peluang karier tersia-siakan, kurang dedikasi. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 75,
+    "slug": "75-knight-of-pentacles",
+    "name": "Knight of Pentacles",
+    "name_id": "Knight Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/75-knight-of-pentacles.webp",
+    "keywords_upright": [
+      "Kerja keras ulet",
+      "keandalan tinggi",
+      "tanggung jawab terpercaya"
+    ],
+    "keywords_reversed": [
+      "Stagnasi rutinitas",
+      "kemalasan terselubung",
+      "sikap terlalu lambat"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Knight of Pentacles (Knight Koin) menunjukkan bahwa Kerja keras ulet, keandalan tinggi, tanggung jawab terpercaya. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Knight of Pentacles (Knight Koin) memberi peringatan adanya Stagnasi rutinitas, kemalasan terselubung, sikap terlalu lambat. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 76,
+    "slug": "76-queen-of-pentacles",
+    "name": "Queen of Pentacles",
+    "name_id": "Queen Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/76-queen-of-pentacles.webp",
+    "keywords_upright": [
+      "Kepraktisan bijak",
+      "mengayomi kelimpahan",
+      "kesejahteraan nyata"
+    ],
+    "keywords_reversed": [
+      "Ketidakseimbangan gaya hidup",
+      "kecemasan materi",
+      "mengabaikan diri"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada Queen of Pentacles (Queen Koin) menunjukkan bahwa Kepraktisan bijak, mengayomi kelimpahan, kesejahteraan nyata. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, Queen of Pentacles (Queen Koin) memberi peringatan adanya Ketidakseimbangan gaya hidup, kecemasan materi, mengabaikan diri. Waspadai kebiasaan lama yang menghambat langkahmu."
+  },
+  {
+    "id": 77,
+    "slug": "77-king-of-pentacles",
+    "name": "King of Pentacles",
+    "name_id": "King Koin",
+    "arcana": "Minor",
+    "suit": "Pentacles",
+    "image": "/cards/77-king-of-pentacles.webp",
+    "keywords_upright": [
+      "Puncak kemapanan bisnis",
+      "penguasa aset",
+      "kemakmuran matang"
+    ],
+    "keywords_reversed": [
+      "Keserakahan materi",
+      "korupsi moral",
+      "menilai segalanya dengan uang"
+    ],
+    "fallback_upright": "Energi elemen Tanah & Realitas Fisik pada King of Pentacles (King Koin) menunjukkan bahwa Puncak kemapanan bisnis, penguasa aset, kemakmuran matang. Manfaatkan momentum ini dengan bijaksana.",
+    "fallback_reversed": "Dalam posisi terbalik, King of Pentacles (King Koin) memberi peringatan adanya Keserakahan materi, korupsi moral, menilai segalanya dengan uang. Waspadai kebiasaan lama yang menghambat langkahmu."
+  }
+]
