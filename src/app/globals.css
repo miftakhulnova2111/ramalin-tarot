@@ -5,11 +5,16 @@
 @tailwind utilities;
 
 :root {
-  --color-canvas: #150F21;
+  --color-canvas: #0C0614;
 }
 
 html, body {
   background-color: var(--color-canvas);
+  background-image: 
+    radial-gradient(ellipse 80% 60% at 50% 15%, rgba(120, 50, 140, 0.22) 0%, transparent 70%),
+    radial-gradient(circle at 50% 70%, rgba(255, 213, 140, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #0A0410 0%, #150A24 40%, #10061B 75%, #06020A 100%);
+  background-attachment: fixed;
   color: #F7EEDD;
   margin: 0;
   padding: 0;

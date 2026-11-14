@@ -161,9 +161,12 @@ export default function TarotPage() {
   const currentStep = Math.min(selectedCards.length + 1, 3);
 
   return (
-    <main className="h-[100dvh] max-h-[100dvh] w-full max-w-md mx-auto flex flex-col overflow-hidden relative bg-tarot-canvas text-tarot-text select-none">
-      {/* Background Altar Glow */}
-      <div className="absolute inset-0 bg-[#150F21] pointer-events-none" />
+    <main className="h-[100dvh] max-h-[100dvh] w-full max-w-md mx-auto flex flex-col overflow-hidden relative bg-[#0C0614] text-tarot-text select-none">
+      {/* Background Altar Glow & Celestial Ambience */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0F0819] via-[#1B0F2E] to-[#08030E] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_20%,rgba(140,60,160,0.22),transparent_75%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_65%,rgba(255,213,140,0.08),transparent_65%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(4,2,7,0.85)_100%)] pointer-events-none" />
 
       {/* Sleek Mystical Top Bar (Clean, no audio toggle button) */}
       <header className="flex-shrink-0 w-full h-11 px-4 flex items-center justify-between border-b border-tarot-gold/15 bg-tarot-surface z-30">

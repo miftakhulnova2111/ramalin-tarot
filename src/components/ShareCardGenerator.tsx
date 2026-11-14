@@ -52,6 +52,44 @@ function drawRoundedRect(
   ctx.closePath();
 }
 
+// Multi-line canvas text wrapping helper for complete advice
+function wrapTextLines(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  maxWidth: number,
+  maxLines: number = 3
+): string[] {
+  const words = text.split(' ');
+  const lines: string[] = [];
+  let currentLine = words[0] || '';
+
+  for (let i = 1; i < words.length; i++) {
+    const word = words[i];
+    const testLine = currentLine + ' ' + word;
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width < maxWidth) {
+      currentLine = testLine;
+    } else {
+      lines.push(currentLine);
+      currentLine = word;
+      if (lines.length >= maxLines - 1) {
+        // Last line, take remainder
+        const rest = words.slice(i).join(' ');
+        let lastLine = currentLine + (rest.length > currentLine.length ? ' ' + rest : '');
+        while (ctx.measureText(lastLine + '...').width > maxWidth && lastLine.length > 10) {
+          lastLine = lastLine.slice(0, -1);
+        }
+        lines.push(lastLine.trim());
+        return lines;
+      }
+    }
+  }
+  if (currentLine && lines.length < maxLines) {
+    lines.push(currentLine);
+  }
+  return lines;
+}
+
 export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
   userName = 'Pengelana',
   question,
@@ -77,48 +115,79 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) throw new Error('Canvas 2D context not available');
 
-    // 1. Background Gradient (Enchanted Twilight)
+    // 1. Background Gradient (Deep Cosmic Twilight)
     const bgGrad = ctx.createLinearGradient(0, 0, 0, 1920);
-    bgGrad.addColorStop(0, '#1E1229');
-    bgGrad.addColorStop(0.35, '#150F21');
-    bgGrad.addColorStop(1, '#0B0813');
+    bgGrad.addColorStop(0, '#0D0717');
+    bgGrad.addColorStop(0.35, '#1B0F2E');
+    bgGrad.addColorStop(0.7, '#140A22');
+    bgGrad.addColorStop(1, '#08030D');
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, 1080, 1920);
 
-    // 2. Mystical Sacred Circles & Ambient Stars
-    ctx.strokeStyle = 'rgba(255, 213, 140, 0.12)';
+    // 2. Ornate Celestial Double Gold Border & Corner Accents
+    ctx.strokeStyle = 'rgba(255, 213, 140, 0.45)';
     ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.arc(540, 960, 480, 0, Math.PI * 2);
+    drawRoundedRect(ctx, 36, 36, 1008, 1848, 28);
     ctx.stroke();
 
-    ctx.strokeStyle = 'rgba(115, 59, 115, 0.25)';
-    ctx.beginPath();
-    ctx.arc(540, 960, 360, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255, 213, 140, 0.2)';
+    ctx.lineWidth = 1.5;
+    drawRoundedRect(ctx, 48, 48, 984, 1824, 20);
     ctx.stroke();
 
-    // 3. Header: App Branding
+    // Corner Star Accents
+    ctx.fillStyle = '#FFD58C';
+    ctx.font = '22px serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('✦', 64, 76);
+    ctx.fillText('✦', 1016, 76);
+    ctx.fillText('✦', 64, 1858);
+    ctx.fillText('✦', 1016, 1858);
+
+    // Sacred Altar Glow (Radial Ambient in Center)
+    const radialGlow = ctx.createRadialGradient(540, 960, 80, 540, 960, 580);
+    radialGlow.addColorStop(0, 'rgba(115, 59, 115, 0.35)');
+    radialGlow.addColorStop(0.5, 'rgba(255, 213, 140, 0.08)');
+    radialGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = radialGlow;
+    ctx.beginPath();
+    ctx.arc(540, 960, 580, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Sacred Circles
+    ctx.strokeStyle = 'rgba(255, 213, 140, 0.12)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(540, 960, 470, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.strokeStyle = 'rgba(255, 213, 140, 0.08)';
+    ctx.beginPath();
+    ctx.arc(540, 960, 350, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // 3. Header: App Branding & Querent Info
     ctx.textAlign = 'center';
     ctx.fillStyle = '#FFD58C';
-    ctx.font = 'bold 36px serif';
-    ctx.fillText('✦ RAMALIN TAROT ✦', 540, 150);
+    ctx.font = 'bold 38px serif';
+    ctx.fillText('✦ RAMALIN TAROT ✦', 540, 135);
 
     ctx.fillStyle = '#E8C37C';
-    ctx.font = '600 22px sans-serif';
-    ctx.fillText(`Pemandu Langkah Batin: ${userName}`, 540, 195);
+    ctx.font = '600 23px sans-serif';
+    ctx.fillText(`Pembacaan Takdir: ${userName}`, 540, 180);
 
     // 4. Querent's Question Box
-    drawRoundedRect(ctx, 120, 250, 840, 100, 24);
-    ctx.fillStyle = 'rgba(34, 22, 43, 0.85)';
+    drawRoundedRect(ctx, 100, 225, 880, 92, 22);
+    ctx.fillStyle = 'rgba(28, 16, 38, 0.9)';
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 213, 140, 0.3)';
+    ctx.strokeStyle = 'rgba(255, 213, 140, 0.4)';
     ctx.lineWidth = 2;
     ctx.stroke();
 
     ctx.fillStyle = '#FFD58C';
-    ctx.font = 'italic 30px serif';
+    ctx.font = 'italic 27px serif';
     const displayQ = question.length > 55 ? question.slice(0, 52) + '...' : question;
-    ctx.fillText(`"${displayQ}"`, 540, 312);
+    ctx.fillText(`"${displayQ}"`, 540, 282);
 
     // 5. Preload the 3 card images
     const [img1, img2, img3] = await Promise.all([
@@ -141,14 +210,14 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
 
       // Position label above card
       ctx.fillStyle = '#FFD58C';
-      ctx.font = 'bold 26px serif';
+      ctx.font = 'bold 24px serif';
       ctx.textAlign = 'center';
-      ctx.fillText(positionLabel, x + w / 2, y - 20);
+      ctx.fillText(positionLabel, x + w / 2, y - 18);
 
       // Card shadow
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
-      ctx.shadowBlur = 30;
-      ctx.shadowOffsetY = 15;
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+      ctx.shadowBlur = 32;
+      ctx.shadowOffsetY = 16;
 
       // Card Border & Clipping
       drawRoundedRect(ctx, x, y, w, h, 20);
@@ -172,39 +241,55 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
 
       // Card Name & Orientation below
       ctx.fillStyle = '#F7EEDD';
-      ctx.font = 'bold 28px serif';
+      ctx.font = 'bold 27px serif';
       ctx.textAlign = 'center';
-      ctx.fillText(card.name, x + w / 2, y + h + 42);
+      ctx.fillText(card.name, x + w / 2, y + h + 38);
 
       ctx.fillStyle = card.isReversed ? '#F55654' : '#FFD58C';
-      ctx.font = '600 22px sans-serif';
-      ctx.fillText(card.isReversed ? 'Reversed' : 'Upright', x + w / 2, y + h + 74);
+      ctx.font = '600 21px sans-serif';
+      ctx.fillText(card.isReversed ? 'Terbalik (Reversed)' : 'Tegak (Upright)', x + w / 2, y + h + 68);
     };
 
     // Draw Row 1: Past (Left) & Present (Right)
-    const cardW = 290;
-    const cardH = 508;
-    drawCardItem(img1, card1, 180, 400, cardW, cardH, 'PAST (Masa Lalu)');
-    drawCardItem(img2, card2, 610, 400, cardW, cardH, 'PRESENT (Masa Kini)');
+    const cardW = 285;
+    const cardH = 500;
+    drawCardItem(img1, card1, 185, 365, cardW, cardH, '✦ PAST (Masa Lalu) ✦');
+    drawCardItem(img2, card2, 610, 365, cardW, cardH, '✦ PRESENT (Masa Kini) ✦');
 
     // Draw Row 2: Future (Centered Below)
-    const futureW = 310;
-    const futureH = 542;
-    drawCardItem(img3, card3, 385, 1060, futureW, futureH, '✦ FUTURE (Masa Depan) ✦');
+    const futureW = 300;
+    const futureH = 525;
+    drawCardItem(img3, card3, 390, 985, futureW, futureH, '✦ FUTURE (Masa Depan) ✦');
 
-    // 6. Footer: Advice & App Brand
-    drawRoundedRect(ctx, 100, 1740, 880, 100, 24);
-    ctx.fillStyle = 'rgba(34, 22, 43, 0.9)';
+    // 6. Footer: Complete Wisdom Advice Box (Multi-Line Word Wrap)
+    const adviceBoxY = 1625;
+    const adviceBoxH = 205;
+    drawRoundedRect(ctx, 90, adviceBoxY, 900, adviceBoxH, 24);
+    ctx.fillStyle = 'rgba(28, 16, 38, 0.95)';
     ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 213, 140, 0.4)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(255, 213, 140, 0.55)';
+    ctx.lineWidth = 2.5;
     ctx.stroke();
 
-    ctx.fillStyle = '#F7EEDD';
-    ctx.font = 'italic 24px serif';
+    // Box Header Label
+    ctx.fillStyle = '#FFD58C';
+    ctx.font = 'bold 20px serif';
     ctx.textAlign = 'center';
-    const summary = reading.share_summary.length > 68 ? reading.share_summary.slice(0, 65) + '...' : reading.share_summary;
-    ctx.fillText(`"${summary}"`, 540, 1800);
+    ctx.fillText('✦ RANGKUMAN HIKMAH & PETUAH ✦', 540, adviceBoxY + 42);
+
+    // Advice Narrative (Wrapped cleanly across 2-3 lines without truncation)
+    const fullAdviceText = (reading.share_summary || reading.final_advice || '')
+      .replace(/^Pesan (Hikmah )?untuk [^:]+:\s*/i, '')
+      .trim();
+
+    ctx.fillStyle = '#F7EEDD';
+    ctx.font = 'italic 23px serif';
+    const lines = wrapTextLines(ctx, `"${fullAdviceText}"`, 820, 3);
+    const lineSpacing = 34;
+    const startY = adviceBoxY + 95;
+    lines.forEach((line, idx) => {
+      ctx.fillText(line, 540, startY + idx * lineSpacing);
+    });
 
     return new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => {

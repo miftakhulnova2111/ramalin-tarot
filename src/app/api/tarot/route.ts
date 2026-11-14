@@ -55,7 +55,7 @@ function generateKnowledgeBaseReading(
   const c3 = getCardDetails(cards[2]);
 
   return {
-    greeting: `Salam hangat, ${name}. Tiga cermin takdir telah terbuka di hadapan kita, membiaskan cahaya untuk memandu langkah batinmu.`,
+    greeting: `Salam hangat, ${name}. Tiga cermin takdir telah terbuka di hadapan kita, membiaskan cahaya untuk menerangi perjalanan jiwamu.`,
     readings: [
       {
         position: 'Past',
@@ -73,8 +73,8 @@ function generateKnowledgeBaseReading(
         interpretation: `Menatap fajar di ufuk depan, terbitlah kartu ${c3.name}. Semesta membisikkan bahwa ${c3.meaning} Jalan terbaik akan membentang luas saat niat tulusmu bersatu padu dengan keberanian mengambil langkah nyata.`,
       },
     ],
-    final_advice: `Pesan Hikmah untuk ${name}: Jejak masa lalumu (${c1.name}) telah mengantarmu ke titik penempaan hari ini (${c2.name}). Jangan biarkan keraguan mengaburkan nuranimu. Jadikan hikmah ${c3.name} sebagai lentera penuntun, dan percayalah bahwa kendali takdir terindah selalu berada di tanganmu sendiri.`,
-    share_summary: `Sebuah kisah takdir untuk ${name}: ditempa oleh ${c1.name}, diarungi bersama ${c2.name}, menuju fajar ${c3.name}.`,
+    final_advice: `Jejak masa lalumu (${c1.name}) telah mengantarmu ke titik penempaan hari ini (${c2.name}). Jangan biarkan keraguan mengaburkan nuranimu. Jadikan hikmah ${c3.name} sebagai lentera penuntun, dan percayalah bahwa kendali takdir terindah selalu berada di tanganmu sendiri.`,
+    share_summary: `Ditempa oleh ${c1.name} dan diuji oleh ${c2.name}, percayalah fajar ${c3.name} akan menyinari keberanianmu dalam mengambil langkah nyata.`,
   };
 }
 
@@ -156,7 +156,7 @@ ATURAN GAYA BAHASA & STRUKTUR PENULISAN:
    - Masa Lalu: Kisahkan benih atau pengalaman terdahulu (${c1Meaning}) yang menempa ketangguhan batin ${cleanName}.
    - Masa Kini: Kisahkan ombak atau penempaan yang sedang dialami (${c2Meaning}) dengan penuh kehangatan dan penguatan.
    - Masa Depan: Kisahkan fajar harapan dan pintu kemungkinan (${c3Meaning}) yang terbuka bila ${cleanName} melangkah dengan berani dan bijak.
-4. NASIHAT TERPADU: Satukan benang merah ketiga kartu menjadi nasihat penuntun hidup yang membesarkan hati.
+4. NASIHAT LANGSUNG TANPA EMBEL-EMBEL: Tuliskan nasihat (final_advice) secara LANGSUNG ke inti petuah bijak. DILARANG KERAS menggunakan awalan seperti "Pesan untuk...", "Pesan Hikmah untuk...", "Pesan semesta untuk...", atau tanda titik dua. Mulai langsung dengan untaian kalimat hikmah yang menggetarkan hati.
 5. DILARANG menggunakan kata "AI", "model bahasa", "algoritma", atau disclaimer robotik. Gunakan Bahasa Indonesia sastrawi yang membumi, mudah dipahami, dan menggetarkan hati.
 
 FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
@@ -179,8 +179,8 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
       "interpretation": "Narasi 3-4 kalimat yang mengalir tentang fajar kemungkinan baru yang menanti langkah nyata ${cleanName} di masa depan."
     }
   ],
-  "final_advice": "Rangkuman 2-3 kalimat yang memadukan hikmah ketiga kartu menjadi satu nasihat hidup yang menyejukkan dan menguatkan batin ${cleanName}.",
-  "share_summary": "Satu kalimat puitis tentang kisah perjalanan takdir untuk ${cleanName}."
+  "final_advice": "Rangkuman 2-3 kalimat nasihat hidup yang menyejukkan dan menguatkan batin, DITULIS LANGSUNG tanpa awalan 'Pesan untuk...'.",
+  "share_summary": "Rangkuman nasihat inti 1-2 kalimat puitis (maksimal 150 karakter) yang memadukan hikmah ketiga kartu sebagai pesan bijak yang utuh."
 }
 `;
 

@@ -119,7 +119,7 @@ export const ReadingBottomSheet: React.FC<ReadingBottomSheetProps> = ({
               Pesan Hikmah Semesta
             </span>
             <p className="text-sm font-serif italic text-amber-100/90 leading-relaxed">
-              "{reading.final_advice}"
+              "{reading.final_advice.replace(/^Pesan (Hikmah )?untuk [^:]+:\s*/i, '').trim()}"
             </p>
           </div>
         )}
