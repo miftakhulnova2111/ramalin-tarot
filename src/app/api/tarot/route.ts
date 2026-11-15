@@ -3,6 +3,8 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { SelectedCard, GeminiReadingResponse } from '@/types/tarot';
 import rawDeckData from '@/data/tarotDeck.json';
 
+export const maxDuration = 60; // Allow Vercel up to 60s execution
+
 const apiKey = process.env.GEMINI_API_KEY || '';
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
@@ -272,12 +274,13 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
 }
 `;
 
-    // 15-second timeout using active models (gemini-3.8-flash / gemini-flash-latest)
-    const fetchWithTimeout = async (): Promise<GeminiReadingResponse> => {
+    // 25-second timeout using ultra-fast active model gemini-2.5-flash-lite
+    const fetchWithTimeout = async (): Promise<{ data: GeminiReadingResponse; modelUsed: string }> => {
       let text = '';
+      let modelUsed = 'gemini-2.5-flash-lite';
       try {
         const model = genAI.getGenerativeModel({
-          model: 'gemini-3.8-flash',
+          model: 'gemini-2.5-flash-lite',
           generationConfig: {
             responseMimeType: 'application/json',
             temperature: 0.7,
@@ -286,9 +289,10 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
         const result = await model.generateContent(prompt);
         text = result.response.text();
       } catch (e1: any) {
-        console.warn('Fallback to gemini-flash-latest:', e1?.message);
+        console.warn('Fallback to gemini-3.8-flash:', e1?.message);
+        modelUsed = 'gemini-3.8-flash';
         const model2 = genAI.getGenerativeModel({
-          model: 'gemini-flash-latest',
+          model: 'gemini-3.8-flash',
           generationConfig: {
             responseMimeType: 'application/json',
             temperature: 0.7,
@@ -298,17 +302,17 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
         text = result2.response.text();
       }
 
-      return JSON.parse(text) as GeminiReadingResponse;
+      return { data: JSON.parse(text) as GeminiReadingResponse, modelUsed };
     };
 
     const timeoutPromise = new Promise<never>((_, reject) =>
-      setTimeout(() => reject(new Error('Gemini generation timeout (15s)')), 15000)
+      setTimeout(() => reject(new Error('Gemini generation timeout (25s)')), 25000)
     );
 
-    const readingData = await Promise.race([fetchWithTimeout(), timeoutPromise]);
+    const { data: readingData, modelUsed } = await Promise.race([fetchWithTimeout(), timeoutPromise]);
     return NextResponse.json(readingData, {
       headers: {
-        'X-Tarot-Engine': 'gemini-3.8-flash',
+        'X-Tarot-Engine': `gemini:${modelUsed}`,
       },
     });
   } catch (error: any) {
