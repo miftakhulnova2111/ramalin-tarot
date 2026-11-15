@@ -247,19 +247,19 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
 
       ctx.fillStyle = card.isReversed ? '#F55654' : '#FFD58C';
       ctx.font = '600 21px sans-serif';
-      ctx.fillText(card.isReversed ? 'Terbalik (Reversed)' : 'Tegak (Upright)', x + w / 2, y + h + 68);
+      ctx.fillText(card.isReversed ? 'Terbalik' : 'Tegak', x + w / 2, y + h + 68);
     };
 
-    // Draw Row 1: Past (Left) & Present (Right)
+    // Draw Row 1: Masa Lalu (Left) & Masa Kini (Right)
     const cardW = 285;
     const cardH = 500;
-    drawCardItem(img1, card1, 185, 365, cardW, cardH, '✦ PAST (Masa Lalu) ✦');
-    drawCardItem(img2, card2, 610, 365, cardW, cardH, '✦ PRESENT (Masa Kini) ✦');
+    drawCardItem(img1, card1, 185, 365, cardW, cardH, '✦ Masa Lalu ✦');
+    drawCardItem(img2, card2, 610, 365, cardW, cardH, '✦ Masa Kini ✦');
 
-    // Draw Row 2: Future (Centered Below)
+    // Draw Row 2: Masa Depan (Centered Below)
     const futureW = 300;
     const futureH = 525;
-    drawCardItem(img3, card3, 390, 985, futureW, futureH, '✦ FUTURE (Masa Depan) ✦');
+    drawCardItem(img3, card3, 390, 985, futureW, futureH, '✦ Masa Depan ✦');
 
     // 6. Footer: Complete Wisdom Advice Box (Multi-Line Word Wrap)
     const adviceBoxY = 1625;

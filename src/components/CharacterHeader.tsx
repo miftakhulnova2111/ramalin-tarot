@@ -23,11 +23,11 @@ export const CharacterHeader: React.FC<CharacterHeaderProps> = ({
   if (stage === 'SHUFFLING') {
     animName = 'anim_2_shuffle';
     if (currentStep === 1) {
-      dialogText = `Pusatkan batinmu pada akar masa lalu (Past), ${userName}... sentuh kartu yang memanggilmu!`;
+      dialogText = `Pusatkan batinmu pada akar masa lalu, ${userName}... sentuh kartu yang memanggilmu!`;
     } else if (currentStep === 2) {
-      dialogText = `Sekarang rasakan dinamika hari ini (Present)... pilih kartu keduamu, ${userName}!`;
+      dialogText = `Sekarang rasakan dinamika masa kinimu... pilih kartu keduamu, ${userName}!`;
     } else {
-      dialogText = `Dan ke mana takdir akan membawamu (Future)... tarik kartu terakhirmu!`;
+      dialogText = `Dan ke mana takdir masa depan membawamu... tarik kartu terakhirmu!`;
     }
   } else if (stage === 'CARD_LOCKING') {
     animName = 'anim_3_pick';

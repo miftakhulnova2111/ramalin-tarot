@@ -130,6 +130,15 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
   4. Mengganti radius sudut `rounded-xl` (12px) menjadi `rounded-lg` (8px) agar sudut kartu membulat alami layaknya kartu fisik tanpa memotong garis bingkai vintage artwork.
   5. Menyesuaikan jarak vertikal Row 1 dan Row 2 menjadi `mt-2.5 xs:mt-3.5` agar tidak saling menumpuk.
 
+### Revisi 10: Eliminasi Teks Dwibahasa pada Share Card & Dialog (Pure Bahasa Indonesia)
+- Tanggal: 15 November 2026
+- Masukan Pengguna:
+  - Tulisan di atas kartu pada hasil Share Card (`PAST (Masa Lalu)`, `PRESENT (Masa Kini)`, `FUTURE (Masa Depan)`) hanya ditulis bahasa Indonesianya saja.
+- Solusi & Tindakan:
+  1. Mengubah label posisi kartu pada kanvas Share Card di `ShareCardGenerator.tsx` menjadi murni Bahasa Indonesia: `✦ Masa Lalu ✦`, `✦ Masa Kini ✦`, `✦ Masa Depan ✦`.
+  2. Menghapus embel-embel bahasa Inggris pada orientasi kartu di Share Card (`Tegak (Upright)` -> `Tegak`, `Terbalik (Reversed)` -> `Terbalik`).
+  3. Menghapus teks redundan `(Past)`, `(Present)`, `(Future)` pada dialog maskot saat ritual kocok kartu di `CharacterHeader.tsx`.
+
 ---
 
 ## 2. Daftar Pantangan & Aturan Mutlak (Do & Don't)
@@ -150,6 +159,7 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 13. DILARANG menggunakan model lama yang telah didepresiasi Google; gunakan model aktif resmi yang didukung akun API (`gemini-3.5-flash-lite`).
 14. DILARANG mencantumkan nama lengkap asli pengguna di watermark aplikasi; gunakan alias/nickname resmi (`mifthspace`).
 15. DILARANG menggunakan rasio aspek sembarangan pada wadah kartu tarot (seperti w-84 h-132 atau aspect-2/3) yang menyebabkan pemotongan paksa atas-bawah dan melonggarkan kanan-kiri. Seluruh wadah kartu tarot WAJIB menggunakan rasio aspek presisi 500:875 (4:7).
+16. DILARANG mencantumkan teks dwibahasa campur aduk seperti `PAST (Masa Lalu)` atau `Tegak (Upright)` pada Share Card maupun dialog antarmuka. Gunakan istilah Bahasa Indonesia yang bersih, elegan, dan natural (`Masa Lalu`, `Masa Kini`, `Masa Depan`, `Tegak`, `Terbalik`).
 
 ### WAJIB DILAKUKAN (Dos):
 1. WAJIB mempertahankan tanda tangan pembuat: "✦ Crafted with magic by mifthspace ✦".
@@ -157,3 +167,4 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 3. WAJIB menjaga performa responsif mobile-friendly, ukuran tap target minimal 44x44px.
 4. WAJIB memprioritaskan kontrol taktil pengguna di setiap tahapan ritual.
 5. WAJIB mengunci proporsi visual kartu tarot pada rasio asli 500:875 (4:7) dengan rounded-lg (8px).
+6. WAJIB menggunakan Bahasa Indonesia yang bersih dan natural untuk seluruh label penunjuk posisi waktu dan orientasi kartu tanpa tanda kurung istilah asing.
