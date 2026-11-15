@@ -13,6 +13,7 @@ import { TriangleSpreadStage } from '@/components/TriangleSpreadStage';
 import { ReadingBottomSheet } from '@/components/ReadingBottomSheet';
 import { ShareCardGenerator } from '@/components/ShareCardGenerator';
 import { HistoryDrawer } from '@/components/HistoryDrawer';
+import { FortuneTellerInterventionModal } from '@/components/FortuneTellerInterventionModal';
 import { SavedReadingSession, GeminiReadingResponse } from '@/types/tarot';
 
 const STORAGE_KEY = 'ramalin_tarot_history';
@@ -40,6 +41,20 @@ export default function TarotPage() {
   const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [savedHistory, setSavedHistory] = useState<SavedReadingSession[]>([]);
+  const [readingCount, setReadingCount] = useState<number>(0);
+  const [isInterventionOpen, setIsInterventionOpen] = useState<boolean>(false);
+
+  // Load session count from sessionStorage
+  useEffect(() => {
+    try {
+      const savedCount = sessionStorage.getItem('ramalin_session_count');
+      if (savedCount) {
+        setReadingCount(parseInt(savedCount, 10));
+      }
+    } catch (e) {
+      console.warn('Gagal membaca sessionStorage:', e);
+    }
+  }, []);
 
   // Autoplay BGM automatically on first user touch/pointer interaction anywhere
   useEffect(() => {
@@ -134,6 +149,17 @@ export default function TarotPage() {
           setReading(data);
           saveSessionToHistory(userName, question, selectedCards, data);
 
+          // Increment reading session count
+          setReadingCount((prev) => {
+            const next = prev + 1;
+            try {
+              sessionStorage.setItem('ramalin_session_count', next.toString());
+            } catch (e) {
+              console.warn('Gagal menyimpan session count:', e);
+            }
+            return next;
+          });
+
           // Transition directly to manual tap-to-reveal phase!
           setStage('REVEALING_CARDS');
           fetchingRef.current = false;
@@ -147,6 +173,15 @@ export default function TarotPage() {
       runReadingFlow();
     }
   }, [stage, selectedCards.length, userName, question]);
+
+  const handleRestartSession = () => {
+    // If completed readings is a multiple of 3 (3, 6, 9...), trigger fortune teller intervention
+    if (readingCount > 0 && readingCount % 3 === 0) {
+      setIsInterventionOpen(true);
+    } else {
+      resetSession();
+    }
+  };
 
   const currentStep = Math.min(selectedCards.length + 1, 3);
   const allCardsFlipped = selectedCards.length === 3 && selectedCards.every((c) => c.isFlipped);
@@ -299,7 +334,7 @@ export default function TarotPage() {
               activeCardIndex={activeCardIndex}
               onTabChange={(idx) => setActiveCardIndex(idx)}
               onShare={() => setIsShareOpen(true)}
-              onRestart={resetSession}
+              onRestart={handleRestartSession}
             />
           </div>
         )}
@@ -316,6 +351,16 @@ export default function TarotPage() {
           onClose={() => setIsShareOpen(false)}
         />
       )}
+
+      {/* Fortune Teller Doubt Intervention Modal (Every 3rd Session) */}
+      <FortuneTellerInterventionModal
+        isOpen={isInterventionOpen}
+        userName={userName}
+        onContinue={() => {
+          setIsInterventionOpen(false);
+          resetSession();
+        }}
+      />
 
       {/* History Drawer */}
       <HistoryDrawer

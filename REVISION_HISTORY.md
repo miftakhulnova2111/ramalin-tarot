@@ -139,6 +139,19 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
   2. Menghapus embel-embel bahasa Inggris pada orientasi kartu di Share Card (`Tegak (Upright)` -> `Tegak`, `Terbalik (Reversed)` -> `Terbalik`).
   3. Menghapus teks redundan `(Past)`, `(Present)`, `(Future)` pada dialog maskot saat ritual kocok kartu di `CharacterHeader.tsx`.
 
+### Revisi 11: Intervensi Mistis Sang Peramal Setiap 3 Sesi (Peka Terhadap Keraguan Pengguna)
+- Tanggal: 15 November 2026
+- Masukan Pengguna:
+  - Setiap tiga kali cek (klik "Sesi Baru" ke-3), muncul peramal menyapa agar user merasa diperhatikan jika sedang ragu/overthinking akan nasibnya.
+  - Nuansa dialog hibrid (jail ketawa jahat tapi hangat dan peka), berganti-ganti acak.
+  - Menggunakan animasi peramal ketawa jahat/smirk (`anim_3_pick.webp`).
+  - Langsung menyediakan tombol aksi tunggal "✦ Lanjut Ramal Lagi ✦".
+- Solusi & Tindakan:
+  1. Membuat komponen `FortuneTellerInterventionModal.tsx` dengan backdrop blur tematik, avatar animasi smirk/laughing peramal, bubble speech dengan 4 pilihan dialog hibrid acak, dan tombol tunggal emas "✦ Lanjut Ramal Lagi ✦".
+  2. Mengimplementasikan pelacak hitungan sesi `readingCount` berbasis `sessionStorage` di `page.tsx`.
+  3. Memasang intersep di tombol "Sesi Baru": ketika `readingCount % 3 === 0`, modal intervensi peramal akan tampil sebelum masuk ke sesi baru.
+  4. Menambahkan SFX audio `snap` saat muncul dan `flip` saat tombol lanjut ditekan.
+
 ---
 
 ## 2. Daftar Pantangan & Aturan Mutlak (Do & Don't)
@@ -160,6 +173,7 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 14. DILARANG mencantumkan nama lengkap asli pengguna di watermark aplikasi; gunakan alias/nickname resmi (`mifthspace`).
 15. DILARANG menggunakan rasio aspek sembarangan pada wadah kartu tarot (seperti w-84 h-132 atau aspect-2/3) yang menyebabkan pemotongan paksa atas-bawah dan melonggarkan kanan-kiri. Seluruh wadah kartu tarot WAJIB menggunakan rasio aspek presisi 500:875 (4:7).
 16. DILARANG mencantumkan teks dwibahasa campur aduk seperti `PAST (Masa Lalu)` atau `Tegak (Upright)` pada Share Card maupun dialog antarmuka. Gunakan istilah Bahasa Indonesia yang bersih, elegan, dan natural (`Masa Lalu`, `Masa Kini`, `Masa Depan`, `Tegak`, `Terbalik`).
+17. DILARANG membiarkan peramal bersikap pasif tanpa empati saat user mengulang sesi ramalan berkali-kali. Intervensi kepekaan batin peramal wajib dihadirkan pada kelipatan 3 sesi.
 
 ### WAJIB DILAKUKAN (Dos):
 1. WAJIB mempertahankan tanda tangan pembuat: "✦ Crafted with magic by mifthspace ✦".
@@ -168,3 +182,4 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 4. WAJIB memprioritaskan kontrol taktil pengguna di setiap tahapan ritual.
 5. WAJIB mengunci proporsi visual kartu tarot pada rasio asli 500:875 (4:7) dengan rounded-lg (8px).
 6. WAJIB menggunakan Bahasa Indonesia yang bersih dan natural untuk seluruh label penunjuk posisi waktu dan orientasi kartu tanpa tanda kurung istilah asing.
+7. WAJIB menghadirkan intervensi mistis peramal pada tombol Sesi Baru kelipatan ke-3 dengan animasi ketawa/smirk, dialog hibrid acak, dan tombol lanjut ramal.
