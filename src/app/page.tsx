@@ -248,8 +248,8 @@ export default function TarotPage() {
 
         {/* Stage 4: REVEALING_CARDS & CARDS_REVEALED_HOLD (Manual Tap-to-Reveal) */}
         {(stage === 'REVEALING_CARDS' || stage === 'CARDS_REVEALED_HOLD') && (
-          <div className="flex flex-col items-center justify-between px-4 py-2 z-10 flex-1 w-full">
-            <div className="my-auto w-full flex flex-col items-center">
+          <div className="flex flex-col items-center justify-between px-4 py-1 z-10 flex-1 w-full overflow-hidden">
+            <div className="my-auto w-full flex flex-col items-center justify-center">
               <TriangleSpreadStage
                 cards={selectedCards}
                 isLoadingAI={false}
@@ -259,19 +259,19 @@ export default function TarotPage() {
               />
             </div>
 
-            {/* Action Zone: Tap instructions OR "Baca Penjelasan Lengkap" when all are flipped */}
-            <div className="w-full pb-3 pt-2">
+            {/* Action Zone: Fixed in viewport */}
+            <div className="w-full pb-3 pt-1 flex-shrink-0">
               {allCardsFlipped ? (
                 <button
                   type="button"
                   onClick={() => setStage('READING_COMPLETE')}
-                  className="w-full min-h-[52px] bg-amber-500 hover:bg-amber-400 active:scale-[0.98] text-stone-950 font-serif font-bold text-base tracking-wide rounded-2xl flex items-center justify-center gap-2 border border-amber-300/40 cursor-pointer shadow-lg shadow-amber-950/40 transition-all animate-bounce"
+                  className="w-full min-h-[50px] bg-amber-500 hover:bg-amber-400 active:scale-[0.98] text-stone-950 font-serif font-bold text-sm tracking-wide rounded-2xl flex items-center justify-center gap-2 border border-amber-300/40 cursor-pointer shadow-lg shadow-amber-950/40 transition-all animate-bounce"
                 >
                   <span>✦ Baca Penjelasan Lengkap ✦</span>
                 </button>
               ) : (
-                <div className="w-full py-2.5 text-center text-xs font-serif text-amber-200/70">
-                  Sentuh kartu yang berpendar untuk membuka tabir takdir
+                <div className="w-full py-2 text-center text-xs font-serif text-amber-200/70">
+                  Ketuk kartu tertutup untuk membuka tabir
                 </div>
               )}
             </div>

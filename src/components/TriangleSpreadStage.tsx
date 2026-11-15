@@ -11,7 +11,6 @@ interface TriangleSpreadStageProps {
   activeCardIndex?: number;
   onCardClick?: (index: number) => void;
   onFlipCard?: (index: number) => void;
-  onAllFlipped?: () => void;
   compactRow?: boolean;
 }
 
@@ -29,7 +28,6 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
   activeCardIndex,
   onCardClick,
   onFlipCard,
-  onAllFlipped,
   compactRow = false,
 }) => {
   const [mindPhraseIdx, setMindPhraseIdx] = useState(0);
@@ -48,7 +46,7 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
   // Compact Row for Final Results Screen (ReadingBottomSheet)
   if (compactRow) {
     return (
-      <div className="w-full max-w-full px-3 flex items-center justify-center gap-2.5 z-10 select-none">
+      <div className="w-full max-w-full px-3 flex items-center justify-center gap-2 z-10 select-none">
         {cards.map((c, i) => {
           const isActive = activeCardIndex === i;
           return (
@@ -60,7 +58,7 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
               }`}
             >
               <div
-                className={`relative w-full aspect-[2/3] max-w-[84px] rounded-xl overflow-hidden border transition-all ${
+                className={`relative w-full aspect-[2/3] max-w-[78px] rounded-xl overflow-hidden border transition-all ${
                   isActive
                     ? 'border-amber-400 ring-2 ring-amber-400/40'
                     : 'border-amber-300/30'
@@ -73,7 +71,7 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
                 />
               </div>
               <span
-                className={`text-[10px] font-serif font-bold mt-1 truncate max-w-[80px] text-center ${
+                className={`text-[10px] font-serif font-bold mt-1 truncate max-w-[75px] text-center ${
                   isActive ? 'text-amber-300' : 'text-stone-300'
                 }`}
               >
@@ -95,11 +93,9 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
     }
   }
 
-  const allAreFlipped = nextUnflippedIdx === -1;
-
-  const card1 = cards[0]; // Past
-  const card2 = cards[1]; // Present
-  const card3 = cards[2]; // Future
+  const card1 = cards[0];
+  const card2 = cards[1];
+  const card3 = cards[2];
 
   const handleCardTap = (idx: number) => {
     if (canTapToReveal) {
@@ -116,8 +112,9 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
     const isNextTarget = canTapToReveal && index === nextUnflippedIdx;
     const isClickable = canTapToReveal ? !card.isFlipped : true;
 
-    const cardWidthClass = isFeatured ? 'w-[108px] xs:w-[124px]' : 'w-[102px] xs:w-[118px]';
-    const cardHeightClass = isFeatured ? 'h-[178px] xs:h-[204px]' : 'h-[168px] xs:h-[194px]';
+    // Compact, balanced dimensions ensuring total vertical fit on mobile screens
+    const cardWidthClass = isFeatured ? 'w-[88px] xs:w-[100px]' : 'w-[84px] xs:w-[94px]';
+    const cardHeightClass = isFeatured ? 'h-[138px] xs:h-[156px]' : 'h-[132px] xs:h-[148px]';
 
     return (
       <div
@@ -127,13 +124,6 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
           isClickable ? 'cursor-pointer' : 'cursor-default'
         } ${isActive ? 'scale-105 z-20' : 'z-10'}`}
       >
-        {/* Glowing Indicator for the next card to be revealed */}
-        {isNextTarget && (
-          <div className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap bg-amber-400 text-stone-950 font-serif font-bold text-[10px] px-2 py-0.5 rounded-full shadow-lg animate-bounce z-30">
-            Ketuk Di Sini ✦
-          </div>
-        )}
-
         {/* 3D Flip Card Container */}
         <div className={`relative ${cardWidthClass} ${cardHeightClass} perspective-1000`}>
           <div
@@ -145,8 +135,8 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
             <div
               className={`absolute inset-0 backface-hidden rounded-xl overflow-hidden border ${
                 isNextTarget
-                  ? 'border-amber-300 ring-2 ring-amber-400 shadow-lg shadow-amber-400/30'
-                  : 'border-amber-300/30 hover:border-amber-300/60'
+                  ? 'border-amber-400 ring-2 ring-amber-400/80 shadow-lg shadow-amber-400/30'
+                  : 'border-amber-300/30'
               }`}
             >
               <img
@@ -154,6 +144,15 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
                 alt="Punggung Kartu"
                 className="w-full h-full object-cover"
               />
+
+              {/* Instruction label placed INSIDE the card back */}
+              {isNextTarget && (
+                <div className="absolute inset-0 bg-stone-950/40 backdrop-blur-[1px] flex flex-col items-center justify-center p-1.5 select-none">
+                  <span className="px-2 py-1 rounded-md bg-amber-400 text-stone-950 font-serif font-bold text-[9px] xs:text-[10px] text-center shadow-lg leading-tight animate-pulse border border-amber-200">
+                    Buka Kartu ✦
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Card Front Face (Face Up) */}
@@ -175,28 +174,21 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
           </div>
         </div>
 
-        {/* Card Title & Position Label */}
-        <div className="mt-1.5 text-center max-w-[130px]">
-          <span className="text-[10px] font-sans uppercase tracking-widest text-amber-300/70 block">
-            {card.positionLabel}
-          </span>
-          <p
-            className={`text-xs font-serif font-bold leading-tight truncate ${
-              card.isFlipped ? 'text-amber-200' : 'text-stone-500'
-            }`}
-          >
-            {card.isFlipped ? card.name : '••••••••'}
-          </p>
-          {card.isFlipped && (
+        {/* Card Title & Orientation (NO "PAST", "PRESENT", "FUTURE" text) */}
+        {card.isFlipped && (
+          <div className="mt-1 text-center max-w-[105px] leading-tight">
+            <p className="text-[10px] xs:text-[11px] font-serif font-bold text-amber-200 truncate">
+              {card.name}
+            </p>
             <span
-              className={`text-[10px] font-sans font-semibold block mt-0.5 ${
-                card.isReversed ? 'text-rose-400' : 'text-amber-300'
+              className={`text-[9px] font-sans font-medium block ${
+                card.isReversed ? 'text-rose-400' : 'text-amber-300/80'
               }`}
             >
               {card.isReversed ? 'Terbalik' : 'Tegak'}
             </span>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   };
@@ -205,56 +197,32 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
     <div className="w-full max-w-full px-2 flex flex-col items-center justify-center relative select-none">
       {/* Mystical Sacred Background Ring */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-64 h-64 rounded-full border border-amber-400/10 animate-[spin_60s_linear_infinite]" />
-        <div className="absolute w-48 h-48 rounded-full border border-purple-500/10" />
+        <div className="w-56 h-56 rounded-full border border-amber-400/10 animate-[spin_60s_linear_infinite]" />
+        <div className="absolute w-40 h-40 rounded-full border border-purple-500/10" />
       </div>
 
-      {/* Row 1: Past (Left) & Present (Right) */}
-      <div className="flex items-start justify-center gap-4 sm:gap-6 w-full z-10">
+      {/* Row 1: Left & Right Cards */}
+      <div className="flex items-start justify-center gap-3 xs:gap-5 w-full z-10">
         {renderCard(card1, 0)}
         {renderCard(card2, 1)}
       </div>
 
-      {/* Row 2: Future (Centered Below) */}
-      <div className="flex items-center justify-center mt-2 z-10">
+      {/* Row 2: Centered Below */}
+      <div className="flex items-center justify-center mt-1.5 z-10">
         {renderCard(card3, 2, true)}
       </div>
 
       {/* Mind Reading Animation Screen when fetching AI */}
       {isLoadingAI && (
-        <div className="mt-4 flex flex-col items-center gap-2 px-4 py-2.5 rounded-2xl bg-stone-900/90 border border-amber-300/30 shadow-xl max-w-xs text-center backdrop-blur-sm z-20 animate-fade-in">
-          <div className="flex items-center gap-2 text-amber-300">
-            <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
-            <span className="text-xs font-serif font-bold tracking-wider uppercase">
+        <div className="mt-3 flex flex-col items-center gap-1.5 px-3 py-2 rounded-2xl bg-stone-900/90 border border-amber-300/30 shadow-xl max-w-xs text-center backdrop-blur-sm z-20 animate-fade-in">
+          <div className="flex items-center gap-1.5 text-amber-300">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-spin" />
+            <span className="text-[11px] font-serif font-bold tracking-wider uppercase">
               Membaca Pikiran & Aura...
             </span>
           </div>
-          <p className="text-xs font-serif italic text-amber-100/90 leading-snug">
+          <p className="text-[11px] font-serif italic text-amber-100/90 leading-tight">
             "{MIND_READING_PHRASES[mindPhraseIdx]}"
-          </p>
-        </div>
-      )}
-
-      {/* Tap-to-Reveal Instruction Bar */}
-      {canTapToReveal && !isLoadingAI && (
-        <div className="mt-3 px-4 py-1.5 rounded-full bg-stone-900/80 border border-amber-300/30 text-center z-20">
-          <p className="text-xs font-serif text-amber-200">
-            {!allAreFlipped ? (
-              <span>
-                Ketuk kartu yang berpendar untuk membuka{' '}
-                <strong className="text-amber-300 underline font-bold">
-                  {cards[nextUnflippedIdx]?.positionLabel === 'Past'
-                    ? 'Masa Lalu'
-                    : cards[nextUnflippedIdx]?.positionLabel === 'Present'
-                    ? 'Masa Kini'
-                    : 'Masa Depan'}
-                </strong>
-              </span>
-            ) : (
-              <span className="text-amber-300 font-bold">
-                ✦ Semua kartu telah terbuka sempurna ✦
-              </span>
-            )}
           </p>
         </div>
       )}

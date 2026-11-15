@@ -106,11 +106,36 @@ export const CharacterHeader: React.FC<CharacterHeaderProps> = ({
     );
   }
 
-  // 2. Stage: FETCHING_READING & REVEALING_CARDS (Glowing Center Presence)
-  if (stage === 'FETCHING_READING' || stage === 'REVEALING_CARDS' || stage === 'CARDS_REVEALED_HOLD') {
+  // 2. Stage: REVEALING_CARDS & CARDS_REVEALED_HOLD (Compact horizontal banner to ensure cards and CTA button fit comfortably)
+  if (stage === 'REVEALING_CARDS' || stage === 'CARDS_REVEALED_HOLD') {
+    return (
+      <div className="flex-shrink-0 w-full px-4 pt-1.5 pb-1 z-10 select-none">
+        <div className="w-full max-w-sm mx-auto flex items-center gap-2.5 bg-stone-900/80 border border-amber-300/25 rounded-2xl p-2 shadow-md">
+          <div className="relative w-11 h-11 flex-shrink-0 rounded-full overflow-hidden border border-amber-300/40 bg-stone-950">
+            <picture className="w-full h-full flex items-center justify-center">
+              <source srcSet={webpSrc} type="image/webp" />
+              <img
+                src={gifSrc}
+                alt="Peramal Ramalin"
+                className="w-full h-full object-cover select-none pointer-events-none"
+              />
+            </picture>
+          </div>
+          <div className="flex-1">
+            <p className="text-[11px] font-serif italic text-amber-100/90 leading-tight">
+              "{dialogText}"
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 3. Stage: FETCHING_READING (Centric Thinking Presence)
+  if (stage === 'FETCHING_READING') {
     return (
       <div className="flex-shrink-0 w-full flex flex-col items-center justify-center pt-2 px-3 z-10 select-none">
-        <div className="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center">
           <picture className="w-full h-full flex items-center justify-center">
             <source srcSet={webpSrc} type="image/webp" />
             <img

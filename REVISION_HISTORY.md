@@ -53,6 +53,20 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
   5. Mekanisme membuka kartu diubah menjadi manual tap-to-reveal: kartu pertama berdenyut pendar emas, pengguna mengetuknya untuk membuka dengan efek suara snap kartu, lalu lanjut ke kartu kedua dan ketiga.
   6. Mengganti seluruh aset SFX dengan audio foley/cinematic card pack berkualitas tinggi (shuffle tebal bertempo mantap, snap kartu berat berbobot dengan thud meja/felt, tanpa beeps oscillator sama sekali).
 
+### Revisi 4: Layout Tahap Buka Kartu & Penghapusan Label Posisi
+- Tanggal: 15 November 2026
+- Masukan Pengguna:
+  1. Tulisan petunjuk "buka kartu" ditaruh di dalam kartu (card back), jangan terpisah di luar.
+  2. DILARANG menuliskan label "PAST", "PRESENT", "FUTURE" di bawah kartu.
+  3. Tombol "Baca Penjelasan Lengkap" tenggelam di bawah layar smartphone sehingga pengguna tidak bisa melanjutkan ke pembahasan kartu.
+- Solusi & Tindakan:
+  1. Memindahkan petunjuk buka kartu langsung ke dalam kartu tertutup (overlay badge di tengah punggung kartu yang berdenyut pendar emas).
+  2. Menghapus teks "PAST", "PRESENT", "FUTURE" di bawah kartu, menyisakan nama kartu dan orientasi (Tegak/Terbalik) saat kartu terbuka.
+  3. Memperbaiki tata letak vertikal mobile:
+     - Mengompres ukuran mascot dan gelembung dialog pada tahap `REVEALING_CARDS` agar hemat ruang vertikal.
+     - Mengurangi skala tinggi kartu segitiga pada mobile (sekitar 135px–145px) agar Row 1 dan Row 2 muat rapi dalam viewport tanpa overflow.
+     - Memastikan tombol aksi CTA di bagian bawah selalu terlihat utuh (pinned/visible dalam viewport) dan langsung bisa diklik saat ketiga kartu terbuka.
+
 ---
 
 ## 2. Daftar Pantangan & Aturan Mutlak (Do & Don't)
@@ -65,6 +79,8 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 5. DILARANG memotong teks rangkuman nasihat di Share Card dengan tanda titik tiga (...). Teks harus terbungkus rapi (multi-line wrap).
 6. DILARANG menambahkan kalimat klise seperti "Pesan untuk [nama]:" pada hasil ramalan.
 7. DILARANG menggunakan background polos atau warna datar yang merusak atmosfer mistik.
+8. DILARANG menuliskan label posisi "PAST", "PRESENT", "FUTURE" di bawah kartu pada tahap tebaran/buka kartu.
+9. DILARANG membuat layout yang mendorong tombol aksi tenggelam di bawah layar viewport smartphone.
 
 ### WAJIB DILAKUKAN (Dos):
 1. WAJIB mempertahankan tanda tangan pembuat: "✦ Crafted with magic by Nova Miftakhul Huda ✦".
