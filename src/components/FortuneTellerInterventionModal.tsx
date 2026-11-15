@@ -34,14 +34,14 @@ export const FortuneTellerInterventionModal: React.FC<FortuneTellerInterventionM
       const randomIdx = Math.floor(Math.random() * INTERVENTION_DIALOGUES.length);
       const cleanName = userName && userName !== 'Pengelana Jiwa' ? userName : '';
       setDialogueText(INTERVENTION_DIALOGUES[randomIdx](cleanName));
-      audioManager.play('snap');
+      audioManager.playCardSnap();
     }
   }, [isOpen, userName]);
 
   if (!isOpen) return null;
 
   const handleContinueClick = () => {
-    audioManager.play('flip');
+    audioManager.playCardFlip();
     onContinue();
   };
 

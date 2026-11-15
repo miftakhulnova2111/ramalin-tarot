@@ -178,6 +178,13 @@ class AudioManager {
   public playEvilChuckle() {
     this.playCardSlide();
   }
+
+  public play(name: string) {
+    if (name === 'shuffle') this.playCardShuffle();
+    else if (name === 'slide' || name === 'whoosh') this.playCardSlide();
+    else if (name === 'flip') this.playCardFlip();
+    else this.playCardSnap();
+  }
 }
 
 export const audioManager = new AudioManager();
