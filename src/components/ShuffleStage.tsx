@@ -110,7 +110,7 @@ export const ShuffleStage: React.FC<ShuffleStageProps> = ({
                   {slot.label}
                 </span>
 
-                <div className="w-12 h-18 rounded-lg border border-tarot-gold/30 overflow-hidden flex items-center justify-center bg-tarot-canvas">
+                <div className="w-[44px] h-[77px] rounded-md border border-tarot-gold/30 overflow-hidden flex items-center justify-center bg-tarot-canvas">
                   {isFilled ? (
                     <img
                       src="/cards/back.webp"
@@ -186,7 +186,7 @@ export const ShuffleStage: React.FC<ShuffleStageProps> = ({
                   zIndex: cardZIndex,
                   opacity: isAnimating ? 1 : opacity,
                 }}
-                className={`absolute w-28 h-42 rounded-xl overflow-hidden cursor-pointer ${
+                className={`absolute w-24 h-42 rounded-lg overflow-hidden cursor-pointer ${
                   isAnimating
                     ? 'ring-2 ring-amber-300 scale-105'
                     : 'border border-amber-300/30 hover:border-amber-300'

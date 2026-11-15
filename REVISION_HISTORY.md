@@ -119,6 +119,17 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
   - Mengganti seluruh kemunculan teks nama asli kreator di `InputFormStage.tsx` dan `ShareCardGenerator.tsx` (baik canvas render maupun modal preview) menjadi `✦ Crafted with magic by mifthspace ✦`.
   - Memperbarui daftar aturan preferensi proyek.
 
+### Revisi 9: Koreksi Rasio Aspek Kartu Tarot (Zero-Cropping 500:875)
+- Tanggal: 15 November 2026
+- Masukan Pengguna:
+  - Cropping gambar kartu tarot tidak presisi: kanan-kiri masih longgar, atas-bawah agak terpotong.
+- Investigasi & Solusi:
+  1. Ditemukan akar masalah: Seluruh aset kartu tarot di `public/cards/` memiliki ukuran `500x875` (rasio aspek tepat 4:7 = 0.5714).
+  2. Wadah kartu sebelumnya menggunakan dimensi `w-[84px] h-[132px]` dan `w-[88px] h-[138px]` (rasio 0.636, terlalu lebar/bantet). Akibatnya, `object-cover` membesarkan lebar sehingga memotong 15px-16px tinggi kartu (ujung atas artwork dan kotak teks bawah terpotong), sementara kanan-kiri menyisakan rongga berlebih ("longgar").
+  3. Mengunci rasio aspek seluruh wadah kartu menjadi `aspect-[500/875]` dengan tinggi dinamis responsif (`h-[136px]` / `h-[142px]` pada mobile).
+  4. Mengganti radius sudut `rounded-xl` (12px) menjadi `rounded-lg` (8px) agar sudut kartu membulat alami layaknya kartu fisik tanpa memotong garis bingkai vintage artwork.
+  5. Menyesuaikan jarak vertikal Row 1 dan Row 2 menjadi `mt-2.5 xs:mt-3.5` agar tidak saling menumpuk.
+
 ---
 
 ## 2. Daftar Pantangan & Aturan Mutlak (Do & Don't)
@@ -138,9 +149,11 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 12. DILARANG memberikan terjemahan nama kartu tarot ke Bahasa Indonesia di dalam tanda kurung (misalnya jangan tulis "Eight of Wands (Eight Tongkat)" atau "The Fool (Si Pandir)"). Cukup gunakan nama kartu aslinya secara natural.
 13. DILARANG menggunakan model lama yang telah didepresiasi Google; gunakan model aktif resmi yang didukung akun API (`gemini-3.5-flash-lite`).
 14. DILARANG mencantumkan nama lengkap asli pengguna di watermark aplikasi; gunakan alias/nickname resmi (`mifthspace`).
+15. DILARANG menggunakan rasio aspek sembarangan pada wadah kartu tarot (seperti w-84 h-132 atau aspect-2/3) yang menyebabkan pemotongan paksa atas-bawah dan melonggarkan kanan-kiri. Seluruh wadah kartu tarot WAJIB menggunakan rasio aspek presisi 500:875 (4:7).
 
 ### WAJIB DILAKUKAN (Dos):
 1. WAJIB mempertahankan tanda tangan pembuat: "✦ Crafted with magic by mifthspace ✦".
 2. WAJIB menggunakan audio nyata untuk interaksi kartu (shuffle, slide, flip).
 3. WAJIB menjaga performa responsif mobile-friendly, ukuran tap target minimal 44x44px.
 4. WAJIB memprioritaskan kontrol taktil pengguna di setiap tahapan ritual.
+5. WAJIB mengunci proporsi visual kartu tarot pada rasio asli 500:875 (4:7) dengan rounded-lg (8px).

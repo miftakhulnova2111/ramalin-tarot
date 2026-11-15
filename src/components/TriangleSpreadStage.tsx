@@ -58,7 +58,7 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
               }`}
             >
               <div
-                className={`relative w-full aspect-[2/3] max-w-[78px] rounded-xl overflow-hidden border transition-all ${
+                className={`relative w-full aspect-[500/875] max-w-[76px] rounded-lg overflow-hidden border transition-all ${
                   isActive
                     ? 'border-amber-400 ring-2 ring-amber-400/40'
                     : 'border-amber-300/30'
@@ -112,9 +112,11 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
     const isNextTarget = canTapToReveal && index === nextUnflippedIdx;
     const isClickable = canTapToReveal ? !card.isFlipped : true;
 
-    // Compact, balanced dimensions ensuring total vertical fit on mobile screens
-    const cardWidthClass = isFeatured ? 'w-[88px] xs:w-[100px]' : 'w-[84px] xs:w-[94px]';
-    const cardHeightClass = isFeatured ? 'h-[138px] xs:h-[156px]' : 'h-[132px] xs:h-[148px]';
+    // Exact 500:875 (4:7) aspect ratio matching the raw tarot card assets
+    // Guaranteed 0px cropping on top/bottom, 0px extra slack on left/right
+    const cardSizeClass = isFeatured
+      ? 'h-[142px] xs:h-[156px] aspect-[500/875]'
+      : 'h-[136px] xs:h-[148px] aspect-[500/875]';
 
     return (
       <div
@@ -125,7 +127,7 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
         } ${isActive ? 'scale-105 z-20' : 'z-10'}`}
       >
         {/* 3D Flip Card Container */}
-        <div className={`relative ${cardWidthClass} ${cardHeightClass} perspective-1000`}>
+        <div className={`relative ${cardSizeClass} perspective-1000`}>
           <div
             className={`w-full h-full relative transform-style-3d transition-transform duration-600 ease-out ${
               card.isFlipped ? 'rotate-y-180' : ''
@@ -133,7 +135,7 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
           >
             {/* Card Back Face (Face Down) */}
             <div
-              className={`absolute inset-0 backface-hidden rounded-xl overflow-hidden border ${
+              className={`absolute inset-0 backface-hidden rounded-lg overflow-hidden border ${
                 isNextTarget
                   ? 'border-amber-400 ring-2 ring-amber-400/80 shadow-lg shadow-amber-400/30'
                   : 'border-amber-300/30'
@@ -157,7 +159,7 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
 
             {/* Card Front Face (Face Up) */}
             <div
-              className={`absolute inset-0 backface-hidden rotate-y-180 rounded-xl overflow-hidden border bg-stone-900 ${
+              className={`absolute inset-0 backface-hidden rotate-y-180 rounded-lg overflow-hidden border bg-stone-900 ${
                 isActive
                   ? 'border-amber-400 ring-2 ring-amber-400/40 shadow-xl'
                   : 'border-amber-300/40'
@@ -208,7 +210,7 @@ export const TriangleSpreadStage: React.FC<TriangleSpreadStageProps> = ({
       </div>
 
       {/* Row 2: Centered Below */}
-      <div className="flex items-center justify-center mt-1.5 z-10">
+      <div className="flex items-center justify-center mt-2.5 xs:mt-3.5 z-10">
         {renderCard(card3, 2, true)}
       </div>
 
