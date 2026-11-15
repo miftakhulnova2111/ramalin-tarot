@@ -272,43 +272,29 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
 }
 `;
 
-    // 8-second auto-fallback timeout with fallback model chain
+    // 15-second auto-fallback timeout using official gemini-2.5-flash
     const fetchWithTimeout = async (): Promise<GeminiReadingResponse> => {
-      let text = '';
-      try {
-        const model = genAI.getGenerativeModel({
-          model: 'gemini-1.5-flash',
-          generationConfig: {
-            responseMimeType: 'application/json',
-            temperature: 0.7,
-          },
-        });
-        const result = await model.generateContent(prompt);
-        text = result.response.text();
-      } catch (err1) {
-        console.warn('Gagal dengan gemini-1.5-flash, mencoba gemini-2.0-flash:', err1);
-        const model2 = genAI.getGenerativeModel({
-          model: 'gemini-2.0-flash',
-          generationConfig: {
-            responseMimeType: 'application/json',
-            temperature: 0.7,
-          },
-        });
-        const result2 = await model2.generateContent(prompt);
-        text = result2.response.text();
-      }
+      const model = genAI.getGenerativeModel({
+        model: 'gemini-2.5-flash',
+        generationConfig: {
+          responseMimeType: 'application/json',
+          temperature: 0.7,
+        },
+      });
 
+      const result = await model.generateContent(prompt);
+      const text = result.response.text();
       return JSON.parse(text) as GeminiReadingResponse;
     };
 
     const timeoutPromise = new Promise<never>((_, reject) =>
-      setTimeout(() => reject(new Error('Gemini timeout')), 8000)
+      setTimeout(() => reject(new Error('Gemini generation timeout (15s)')), 15000)
     );
 
     const readingData = await Promise.race([fetchWithTimeout(), timeoutPromise]);
     return NextResponse.json(readingData, {
       headers: {
-        'X-Tarot-Engine': 'gemini',
+        'X-Tarot-Engine': 'gemini-2.5-flash',
       },
     });
   } catch (error: any) {
