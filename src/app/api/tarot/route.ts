@@ -24,29 +24,79 @@ const deckLookup = new Map<number, DeckCard>(
   (rawDeckData as DeckCard[]).map((c) => [c.id, c])
 );
 
-// Knowledge Base Fallback Generator (Storytelling narrative without robotic template repetitions)
+// Helper to format keywords list into smooth, lowercase Indonesian
+function formatKeywords(kws: string[]): string {
+  if (!kws || kws.length === 0) return 'perenungan dan kebijaksanaan batin';
+  const clean = kws.map((k) => k.trim().toLowerCase()).filter(Boolean);
+  if (clean.length === 1) return clean[0];
+  if (clean.length === 2) return `${clean[0]} dan ${clean[1]}`;
+  return `${clean[0]}, ${clean[1]}, serta ${clean[2]}`;
+}
+
+// Helper to detect topic domain and supply contextual narrative anchors
+function detectTopicDomain(question: string) {
+  const q = question.toLowerCase();
+  if (/karier|karir|rezeki|pekerjaan|usaha|bisnis|uang|kerja|finansial|profesi/.test(q)) {
+    return {
+      domain: 'karier',
+      label: 'arah karier dan kelancaran rezekimu',
+      pastContext: 'perjalanan usaha dan kariermu terdahulu',
+      presentContext: 'dinamika profesional dan pekerjaan yang tengah kamu jalani saat ini',
+      futureContext: 'fajar kelapangan rezeki dan perkembangan masa depan',
+      adviceFocus: 'pintu kelapangan rezeki dan keberhasilan terbaikmu',
+    };
+  }
+  if (/asmara|cinta|hubungan|jodoh|pasangan|hati|perasaan|nikah|kekasih/.test(q)) {
+    return {
+      domain: 'asmara',
+      label: 'jalinan asmara dan ikatan hatimu',
+      pastContext: 'jejak rasa dan ikatan di masa lalumu',
+      presentContext: 'ombak perasaan dan dinamika hubungan yang sedang kamu arungi saat ini',
+      futureContext: 'pintu kebahagiaan dan kejelasan ikatan batin ke depan',
+      adviceFocus: 'ketenangan dan ketulusan ikatan hatimu',
+    };
+  }
+  if (/galau|gelisah|batin|jiwa|cemas|takut|bimbang|bingung|tenang|stres/.test(q)) {
+    return {
+      domain: 'batin',
+      label: 'kedamaian batin dan kejernihan jiwamu',
+      pastContext: 'akar kegelisahan dan pengalaman yang membekas di relung batinmu',
+      presentContext: 'proses penerimaan rasa dan pergulatan batin hari ini',
+      futureContext: 'fajar ketenangan jiwa dan kejernihan nurani ke depan',
+      adviceFocus: 'kedamaian dan ketenteraman batin yang hakiki',
+    };
+  }
+  return {
+    domain: 'umum',
+    label: 'langkah hidup dan pencarian batinmu',
+    pastContext: 'akar perjalanan dan tempaan hidupmu di masa lalu',
+    presentContext: 'dinamika dan kenyataan yang sedang kamu hadapi hari ini',
+    futureContext: 'fajar potensi dan kemungkinan baru di masa depan',
+    adviceFocus: 'kebahagiaan dan keteguhan takdirmu',
+  };
+}
+
+// Knowledge Base Fallback Generator (Deeply contextual storytelling without robotic templates or card translations)
 function generateKnowledgeBaseReading(
   name: string,
   topic: string,
   cards: SelectedCard[]
 ): GeminiReadingResponse {
+  const tInfo = detectTopicDomain(topic);
+
   const getCardDetails = (card: SelectedCard) => {
     const fromDeck = deckLookup.get(card.id);
     const cardName = fromDeck?.name || card.name;
-    const cardNameId = fromDeck?.name_id || card.name_id || '';
-    const meaning = card.isReversed
-      ? fromDeck?.fallback_reversed || card.fallback_reversed || 'mengingatkan untuk lebih mawas diri dan berhati-hati.'
-      : fromDeck?.fallback_upright || card.fallback_upright || 'membuka peluang dan potensi positif yang nyata.';
-    const keywords = card.isReversed
-      ? fromDeck?.keywords_reversed || card.keywords_reversed || ['refleksi', 'kehati-hatian']
-      : fromDeck?.keywords_upright || card.keywords_upright || ['peluang', 'kejernihan'];
+    const isRev = !!card.isReversed;
+    const keywords = isRev
+      ? fromDeck?.keywords_reversed || card.keywords_reversed || ['kehati-hatian', 'refleksi diri']
+      : fromDeck?.keywords_upright || card.keywords_upright || ['peluang positif', 'kejernihan langkah'];
 
     return {
       name: cardName,
-      nameId: cardNameId,
-      meaning,
-      keywords: keywords.join(', '),
-      orientation: card.isReversed ? 'Terbalik' : 'Tegak',
+      isReversed: isRev,
+      orientation: isRev ? 'Terbalik' : 'Tegak',
+      kwText: formatKeywords(keywords),
     };
   };
 
@@ -54,27 +104,51 @@ function generateKnowledgeBaseReading(
   const c2 = getCardDetails(cards[1]);
   const c3 = getCardDetails(cards[2]);
 
+  const isChallenging = (kw: string) =>
+    /duka|kehilangan|penyesalan|patah|hancur|krisis|beban|konflik|kegagalan|takut/.test(kw);
+
+  // Card 1 (Past / Akar) Narrative
+  const pastNarration = c1.isReversed
+    ? `Menelusuri jejak awal ${tInfo.pastContext}, ${name}, kartu ${c1.name} hadir dalam posisi terbalik mencerminkan adanya fase ${c1.kwText}. Rintangan serta keraguan masa lalu itulah yang sebenarnya menempa ketangguhanmu dan menjadi akar pijakan yang mendewasakanmu hari ini.`
+    : isChallenging(c1.kwText)
+    ? `Menelusuri jejak awal ${tInfo.pastContext}, ${name}, kartu ${c1.name} memperlihatkan masa lalu yang pernah diwarnai oleh ${c1.kwText}. Pengalaman serta tempaan batin itulah yang membentuk kedalaman nuranimu dan menjadi fondasi ketangguhanmu hari ini.`
+    : `Menelusuri jejak awal ${tInfo.pastContext}, ${name}, kartu ${c1.name} memancarkan energi positif tentang ${c1.kwText}. Ritme dan benih baik yang kamu tanam di masa lalu telah membentuk insting yang tajam dan menjadi fondasi kokoh bagi perjalananmu hari ini.`;
+
+  // Card 2 (Present / Ombak Hari Ini) Narrative
+  const presentNarration = c2.isReversed
+    ? `Di tengah ${tInfo.presentContext}, kartu ${c2.name} hadir dalam posisi terbalik sebagai cermin kewaspadaan terhadap ${c2.kwText}. Ujian dan gesekan ini hadir bukan untuk menghentikan langkahmu, melainkan melatih kesabaran batinmu dalam mengelola kendali diri.`
+    : isChallenging(c2.kwText)
+    ? `Di tengah ${tInfo.presentContext}, kartu ${c2.name} mencerminkan tantangan nyata berupa ${c2.kwText}. Ombak ujian ini menguji daya tahanmu; hadapilah dengan kepala dingin karena di balik kesulitan inilah jalan keluar dan kedewasaanmu sedang ditempa.`
+    : `Di tengah ${tInfo.presentContext}, kartu ${c2.name} membawa dorongan kuat tentang ${c2.kwText}. Ombak tantangan yang sedang kamu hadapi adalah ruang pembuktian di mana kedewasaan serta ketulusan niatmu bersinar terang.`;
+
+  // Card 3 (Future / Fajar Potensi) Narrative
+  const futureNarration = c3.isReversed
+    ? `Menyongsong ${tInfo.futureContext}, terbitlah kartu ${c3.name} dalam posisi terbalik. Semesta berbisik agar kamu berani menyembuhkan luka batin dan melepaskan ${c3.kwText}. Ketika kamu berani berdamai dengan kenyataan, pintu kemungkinan baru akan terbuka lebar menyambut langkah beranimu.`
+    : isChallenging(c3.kwText)
+    ? `Menyongsong ${tInfo.futureContext}, kartu ${c3.name} hadir sebagai pengingat bijak agar kamu berhati-hati terhadap ${c3.kwText} dan tidak berlarut-larut meratapi masa lalu. Semesta membentangkan jalan terbaik saat kamu memusatkan pandangan pada peluang baru yang masih berdiri tegak di hadapanmu.`
+    : `Menyongsong ${tInfo.futureContext}, terbitlah kartu ${c3.name} yang menyiratkan fajar harapan baru tentang ${c3.kwText}. Semesta membentangkan jalan terbaik saat ketulusan niatmu dipadukan dengan keberanian mengambil tindakan nyata.`;
+
   return {
-    greeting: `Salam hangat, ${name}. Tiga cermin takdir telah terbuka di hadapan kita, membiaskan cahaya untuk menerangi perjalanan jiwamu.`,
+    greeting: `Salam hangat, ${name}. Tiga cermin takdir telah terbuka di hadapan kita, membiaskan cahaya untuk menerangi ${tInfo.label}.`,
     readings: [
       {
         position: 'Past',
         card_title: `${c1.name} — ${c1.orientation}`,
-        interpretation: `Dari jejak awal perjalananmu, ${name}, kartu ${c1.name} memperlihatkan benih yang tertanam di masa lalu. Energi ini ${c1.meaning} Pengalaman serta tempaan batin itulah yang membentuk caramu memandang dunia dan menjadi akar pijakanmu hari ini.`,
+        interpretation: pastNarration,
       },
       {
         position: 'Present',
         card_title: `${c2.name} — ${c2.orientation}`,
-        interpretation: `Di fase yang sedang kamu arungi saat ini, kartu ${c2.name} hadir mencerminkan gejolak yang tengah kamu hadapi. Situasi ini ${c2.meaning} Sambutlah ombak kehidupan ini dengan ketenangan batin, karena di sinilah titik ujian dan kedewasaanmu sedang dibentuk.`,
+        interpretation: presentNarration,
       },
       {
         position: 'Future',
         card_title: `${c3.name} — ${c3.orientation}`,
-        interpretation: `Menatap fajar di ufuk depan, terbitlah kartu ${c3.name}. Semesta membisikkan bahwa ${c3.meaning} Jalan terbaik akan membentang luas saat niat tulusmu bersatu padu dengan keberanian mengambil langkah nyata.`,
+        interpretation: futureNarration,
       },
     ],
-    final_advice: `Jejak masa lalumu (${c1.name}) telah mengantarmu ke titik penempaan hari ini (${c2.name}). Jangan biarkan keraguan mengaburkan nuranimu. Jadikan hikmah ${c3.name} sebagai lentera penuntun, dan percayalah bahwa kendali takdir terindah selalu berada di tanganmu sendiri.`,
-    share_summary: `Ditempa oleh ${c1.name} dan diuji oleh ${c2.name}, percayalah fajar ${c3.name} akan menyinari keberanianmu dalam mengambil langkah nyata.`,
+    final_advice: `Jejak perjalananmu bersama ${c1.name} telah mengantarmu pada titik penempaan ${c2.name}. Jangan biarkan keraguan memudarkan keyakinanmu. Jadikan hikmah ${c3.name} sebagai lentera penuntun, dan percayalah bahwa keteguhan batinmu adalah kunci pembuka ${tInfo.adviceFocus}.`,
+    share_summary: `Ditempa oleh ${c1.name} dan diuji oleh ${c2.name}, percayalah fajar ${c3.name} akan membimbing langkahmu menuju ${tInfo.adviceFocus}.`,
   };
 }
 
@@ -128,37 +202,46 @@ export async function POST(request: Request) {
     const c2Keywords = (cards[1].isReversed ? c2Deck.keywords_reversed : c2Deck.keywords_upright || []).join(', ');
     const c3Keywords = (cards[2].isReversed ? c3Deck.keywords_reversed : c3Deck.keywords_upright || []).join(', ');
 
+    // Clean any parenthesized translations from knowledge base prompt
+    const cleanCardMeaning = (meaning: string) =>
+      meaning.replace(/\s*\([^)]*\)/g, '').replace(/Energi elemen [^p]+ pada /g, 'Energi ').trim();
+
+    const c1CleanMeaning = cleanCardMeaning(c1Meaning);
+    const c2CleanMeaning = cleanCardMeaning(c2Meaning);
+    const c3CleanMeaning = cleanCardMeaning(c3Meaning);
+
     const prompt = `
 Anda adalah peramal kartu tarot bijaksana yang bertutur hangat, empatik, mendalam, dan puitis layaknya seorang sahabat jiwa.
 
 DATA PEMAIN:
 - Nama Pemain: "${cleanName}"
-- Hal yang Diresapi / Dihadapi: "${cleanQuestion}"
+- Hal yang Diresapi / Fokus Niat: "${cleanQuestion}"
 
-KNOWLEDGE BASE RESMI TAROT (FONDASI MAKNA MUTLAK):
-Gunakan arti baku resmi di bawah ini sebagai fondasi kebenaran kartu:
+KNOWLEDGE BASE RESMI TAROT (FONDASI MAKNA):
 1. Kartu 1 (Masa Lalu / Akar Perjalanan): ${c1Deck.name} — ${cards[0].isReversed ? 'Terbalik (Reversed)' : 'Tegak (Upright)'}
-   Makna Baku: ${c1Meaning}
+   Makna Baku: ${c1CleanMeaning}
    Kata Kunci: ${c1Keywords}
 
 2. Kartu 2 (Masa Kini / Ombak & Tantangan Hari Ini): ${c2Deck.name} — ${cards[1].isReversed ? 'Terbalik (Reversed)' : 'Tegak (Upright)'}
-   Makna Baku: ${c2Meaning}
+   Makna Baku: ${c2CleanMeaning}
    Kata Kunci: ${c2Keywords}
 
 3. Kartu 3 (Masa Depan / Fajar & Potensi Langkah): ${c3Deck.name} — ${cards[2].isReversed ? 'Terbalik (Reversed)' : 'Tegak (Upright)'}
-   Makna Baku: ${c3Meaning}
+   Makna Baku: ${c3CleanMeaning}
    Kata Kunci: ${c3Keywords}
 
 ATURAN GAYA BAHASA & STRUKTUR PENULISAN:
 1. GAYA NARASI MENGALIR: Tuliskan pembacaan ini sebagai satu KISAH HIDUP yang mengalir utuh (storytelling). DILARANG KERAS menggunakan frasa robotik seperti "terkait pertanyaan", "mengenai pertanyaanmu", "pertanyaan yang kamu ajukan", atau menempelkan tanda kutip pada topik.
-2. ANYAM TOPIK KE DALAM KISAH: Serap esensi kegelisahan/topik "${cleanQuestion}" dan masukkan secara anggun ke dalam jalinan cerita perjalanan ${cleanName}.
+2. ANYAM TOPIK KE DALAM KISAH: Serap esensi kegelisahan/fokus niat "${cleanQuestion}" dan masukkan secara mendalam dan personal ke dalam jalinan cerita perjalanan ${cleanName} (jika karier dan rezeki, anyam dengan usaha, pekerjaan, rezeki, dan profesionalitas; jika asmara, anyam dengan ikatan hati; jika batin, anyam dengan ketenangan jiwa).
 3. TIGA BABAK CERITA:
-   - Masa Lalu: Kisahkan benih atau pengalaman terdahulu (${c1Meaning}) yang menempa ketangguhan batin ${cleanName}.
-   - Masa Kini: Kisahkan ombak atau penempaan yang sedang dialami (${c2Meaning}) dengan penuh kehangatan dan penguatan.
-   - Masa Depan: Kisahkan fajar harapan dan pintu kemungkinan (${c3Meaning}) yang terbuka bila ${cleanName} melangkah dengan berani dan bijak.
+   - Masa Lalu: Kisahkan benih atau pengalaman terdahulu yang menempa ketangguhan batin ${cleanName} dalam konteks topiknya.
+   - Masa Kini: Kisahkan ombak atau penempaan yang sedang dialami dengan penuh kehangatan dan penguatan.
+   - Masa Depan: Kisahkan fajar harapan dan pintu kemungkinan yang terbuka bila ${cleanName} melangkah dengan berani dan bijak.
 4. NASIHAT LANGSUNG TANPA EMBEL-EMBEL: Tuliskan nasihat (final_advice) secara LANGSUNG ke inti petuah bijak. DILARANG KERAS menggunakan awalan seperti "Pesan untuk...", "Pesan Hikmah untuk...", "Pesan semesta untuk...", atau tanda titik dua. Mulai langsung dengan untaian kalimat hikmah yang menggetarkan hati.
 5. DILARANG menggunakan kata "AI", "model bahasa", "algoritma", atau disclaimer robotik. Gunakan Bahasa Indonesia sastrawi yang membumi, mudah dipahami, dan menggetarkan hati.
-6. DILARANG KERAS menggunakan emoji dalam bentuk apa pun (seperti 🔮, ✨, 🌟, ❤️, dsb) di seluruh respons (greeting, interpretation, maupun final_advice). Gunakan kata-kata Bahasa Indonesia yang anggun, sastrawi, dan murni.
+6. DILARANG KERAS menggunakan emoji dalam bentuk apa pun di seluruh respons (greeting, interpretation, maupun final_advice).
+7. DILARANG MEMBERIKAN TERJEMAHAN NAMA KARTU DI DALAM KURUNG: Gunakan HANYA nama kartu tarot resminya secara natural (contoh: gunakan "${c1Deck.name}", "${c2Deck.name}", "${c3Deck.name}". JANGAN SEKALI-KALI menuliskan terjemahan seperti "(Eight Tongkat)" atau "(Si Pandir)").
+8. DILARANG menggunakan huruf kapital ganjil di tengah kalimat (contoh: jangan tulis "menunjukkan bahwa Kemajuan", tulis "menunjukkan bahwa kemajuan").
 
 FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
 {
@@ -167,7 +250,7 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
     {
       "position": "Past",
       "card_title": "${c1Deck.name} — ${cards[0].isReversed ? 'Terbalik' : 'Tegak'}",
-      "interpretation": "Narasi 3-4 kalimat yang mengalir tentang akar masa lalu dan bagaimana pengalaman itu membentuk pijakan ${cleanName} hari ini."
+      "interpretation": "Narasi 3-4 kalimat yang mengalir tentang akar masa lalu dan bagaimana pengalaman itu membentuk pijakan ${cleanName} hari ini dalam konteks topiknya."
     },
     {
       "position": "Present",
@@ -185,18 +268,32 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
 }
 `;
 
-    // 8-second auto-fallback timeout
+    // 8-second auto-fallback timeout with fallback model chain
     const fetchWithTimeout = async (): Promise<GeminiReadingResponse> => {
-      const model = genAI.getGenerativeModel({
-        model: 'gemini-2.5-flash',
-        generationConfig: {
-          responseMimeType: 'application/json',
-          temperature: 0.7,
-        },
-      });
+      let text = '';
+      try {
+        const model = genAI.getGenerativeModel({
+          model: 'gemini-1.5-flash',
+          generationConfig: {
+            responseMimeType: 'application/json',
+            temperature: 0.7,
+          },
+        });
+        const result = await model.generateContent(prompt);
+        text = result.response.text();
+      } catch (err1) {
+        console.warn('Gagal dengan gemini-1.5-flash, mencoba gemini-2.0-flash:', err1);
+        const model2 = genAI.getGenerativeModel({
+          model: 'gemini-2.0-flash',
+          generationConfig: {
+            responseMimeType: 'application/json',
+            temperature: 0.7,
+          },
+        });
+        const result2 = await model2.generateContent(prompt);
+        text = result2.response.text();
+      }
 
-      const result = await model.generateContent(prompt);
-      const text = result.response.text();
       return JSON.parse(text) as GeminiReadingResponse;
     };
 

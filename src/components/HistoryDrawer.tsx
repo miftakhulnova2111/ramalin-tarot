@@ -71,7 +71,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                           key={idx}
                           className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-tarot-canvas/60 text-tarot-gold border border-tarot-border/40 truncate max-w-[80px]"
                         >
-                          {c.name_id}
+                          {c.name}
                         </span>
                       ))}
                     </div>

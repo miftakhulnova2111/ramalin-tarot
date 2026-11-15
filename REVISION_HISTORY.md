@@ -82,6 +82,25 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
      - Mengganti teks tombol prolog `Buka Altar Tarot 🔮` menjadi `Buka Altar Tarot ✦`.
      - Menambahkan instruksi ketat pada system prompt Gemini API (`/api/tarot/route.ts`) agar dilarang menghasilkan emoji dalam sapaan, narasi bacaan, maupun nasihat.
 
+### Revisi 6: Refaktor Kalimat Narasi, Eliminasi Terjemahan Kartu, & Koreksi Model Gemini
+- Tanggal: 15 November 2026
+- Masukan Pengguna:
+  1. Pengguna sudah memasang Gemini API Key sebelum deploy Vercel, namun hasil pembacaan masih memakai fallback.
+  2. Minta refaktor kalimat penjelasan kartu agar mengalir rapi dan kontekstual terhadap topik yang dipilih.
+  3. DILARANG memberikan terjemahan kartu di dalam kurung (seperti `(Eight Tongkat)`, `(King Tongkat)`, `(Five Cawan)`).
+- Solusi & Tindakan:
+  1. Memperbaiki pemanggilan model Google Generative AI di `/api/tarot/route.ts`:
+     - Menghapus nama model yang tidak valid `gemini-2.5-flash` (penyebab silent failure 404 yang memicu fallback otomatis).
+     - Menggantinya dengan model resmi `gemini-1.5-flash` dengan mekanisme fallback otomatis ke `gemini-2.0-flash`.
+  2. Menghapus seluruh terjemahan nama kartu tarot di dalam tanda kurung:
+     - Menginstruksikan LLM Gemini secara ketat untuk HANYA menggunakan nama resmi kartu tarot secara natural tanpa embel-embel terjemahan.
+     - Membersihkan raw knowledge base makna kartu dari tanda kurung terjemahan.
+     - Mengganti tampilan nama kartu di riwayat sesi `HistoryDrawer.tsx` dari `c.name_id` menjadi `c.name`.
+  3. Merombak total mesin narasi Fallback (`generateKnowledgeBaseReading`):
+     - Membangun deteksi domain topik cerdas (Karier & Rezeki, Asmara, Kegalauan Batin, Panduan Hidup).
+     - Menganyam topik secara kontekstual ke dalam babak Masa Lalu, Masa Kini, Masa Depan, dan Nasihat Akhir.
+     - Menghapus glitch pengulangan kata ("Energi ini Energi..."), huruf kapital di tengah kalimat, dan kontradiksi kartu menantang (seperti Five of Cups yang kini ditafsirkan dengan bijak dan empati).
+
 ---
 
 ## 2. Daftar Pantangan & Aturan Mutlak (Do & Don't)
@@ -98,6 +117,8 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 9. DILARANG membuat layout yang mendorong tombol aksi tenggelam di bawah layar viewport smartphone.
 10. DILARANG menggunakan emoji berwarna OS (seperti 🔮, ❤️, 💼, ⚡, dsb) di antarmuka maupun pada hasil generate AI. Gunakan ikon SVG minimalis atau glif monokrom elegan (seperti ✦).
 11. DILARANG membiarkan celah kosong terlalu jauh antara karakter maskot dan gelembung dialog (speech bubble). Bubble text harus selalu dekat dan terhubung visual dengan karakter yang berbicara.
+12. DILARANG memberikan terjemahan nama kartu tarot ke Bahasa Indonesia di dalam tanda kurung (misalnya jangan tulis "Eight of Wands (Eight Tongkat)" atau "The Fool (Si Pandir)"). Cukup gunakan nama kartu aslinya secara natural.
+13. DILARANG menggunakan nama model AI yang tidak terdaftar di Google API (gunakan selalu model resmi GA seperti `gemini-1.5-flash`).
 
 ### WAJIB DILAKUKAN (Dos):
 1. WAJIB mempertahankan tanda tangan pembuat: "✦ Crafted with magic by Nova Miftakhul Huda ✦".
