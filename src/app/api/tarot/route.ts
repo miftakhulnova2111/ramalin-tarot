@@ -180,7 +180,11 @@ export async function POST(request: Request) {
     // If Gemini is not configured, immediately use rich knowledge base fallback (< 5ms)
     if (!genAI || !apiKey) {
       const fallback = generateKnowledgeBaseReading(cleanName, cleanQuestion, rawCards);
-      return NextResponse.json(fallback);
+      return NextResponse.json(fallback, {
+        headers: {
+          'X-Tarot-Engine': 'fallback-no-key',
+        },
+      });
     }
 
     // Prepare complete card info from official Knowledge Base
@@ -302,10 +306,20 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
     );
 
     const readingData = await Promise.race([fetchWithTimeout(), timeoutPromise]);
-    return NextResponse.json(readingData);
-  } catch (error) {
-    console.warn('Menggunakan pembacaan kartu Knowledge Base:', error);
+    return NextResponse.json(readingData, {
+      headers: {
+        'X-Tarot-Engine': 'gemini',
+      },
+    });
+  } catch (error: any) {
+    const errorMsg = error?.message || String(error);
+    console.warn('Menggunakan pembacaan kartu Knowledge Base:', errorMsg);
     const fallback = generateKnowledgeBaseReading(cleanName, cleanQuestion, rawCards);
-    return NextResponse.json(fallback);
+    return NextResponse.json(fallback, {
+      headers: {
+        'X-Tarot-Engine': 'fallback',
+        'X-Tarot-Error': encodeURIComponent(errorMsg.slice(0, 300)),
+      },
+    });
   }
 }
