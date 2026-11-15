@@ -276,7 +276,7 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
 
     // Native fetch to Google Generative Language API (zero-latency, no SDK stall)
     const fetchWithDirectAPI = async (): Promise<{ data: GeminiReadingResponse; modelUsed: string }> => {
-      const targetModel = 'gemini-2.5-flash-lite';
+      const targetModel = 'gemini-3.5-flash-lite';
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${apiKey}`;
 
       const res = await fetch(url, {
