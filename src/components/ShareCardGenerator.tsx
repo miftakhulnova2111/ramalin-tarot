@@ -295,7 +295,7 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
     ctx.fillStyle = 'rgba(255, 213, 140, 0.7)';
     ctx.font = '500 16px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('✦ Crafted with magic by Nova Miftakhul Huda ✦', 540, 1868);
+    ctx.fillText('✦ Crafted with magic by mifthspace ✦', 540, 1868);
 
     return new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => {
@@ -404,7 +404,7 @@ export const ShareCardGenerator: React.FC<ShareCardGeneratorProps> = ({
               "{reading.share_summary}"
             </p>
             <span className="text-[8px] text-amber-200/50 font-sans">
-              ✦ Crafted with magic by Nova Miftakhul Huda ✦
+              ✦ Crafted with magic by mifthspace ✦
             </span>
           </div>
         </div>

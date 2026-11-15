@@ -195,7 +195,7 @@ export const InputFormStage: React.FC<InputFormStageProps> = ({
 
           {/* Attribution signature */}
           <p className="text-center text-[10px] font-sans text-amber-200/40 tracking-wider pt-1 select-none">
-            ✦ Crafted with magic by <span className="text-amber-300/70 font-medium">Nova Miftakhul Huda</span> ✦
+            ✦ Crafted with magic by <span className="text-amber-300/70 font-medium">mifthspace</span> ✦
           </p>
         </div>
       </form>

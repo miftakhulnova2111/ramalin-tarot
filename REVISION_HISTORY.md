@@ -111,6 +111,14 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
   3. Mengganti pembungkus SDK dengan pemanggilan native `fetch` berlatensi nol (`gemini-3.5-flash-lite`) serta mengaktifkan `export const maxDuration = 60`.
   4. Terverifikasi 100% LIVE: Header response kini mengembalikan `X-Tarot-Engine: gemini:gemini-3.5-flash-lite` dengan waktu eksekusi super cepat (~3.5 detik), narasi mendalam, bebas emoji, dan tanpa terjemahan kartu dalam kurung.
 
+### Revisi 8: Perubahan Tanda Tangan Kreator (mifthspace)
+- Tanggal: 15 November 2026
+- Masukan Pengguna:
+  - Mengubah attribution "Crafted with magic by Nova Miftakhul Huda" menjadi "Crafted with magic by mifthspace".
+- Solusi & Tindakan:
+  - Mengganti seluruh kemunculan teks nama asli kreator di `InputFormStage.tsx` dan `ShareCardGenerator.tsx` (baik canvas render maupun modal preview) menjadi `✦ Crafted with magic by mifthspace ✦`.
+  - Memperbarui daftar aturan preferensi proyek.
+
 ---
 
 ## 2. Daftar Pantangan & Aturan Mutlak (Do & Don't)
@@ -129,9 +137,10 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 11. DILARANG membiarkan celah kosong terlalu jauh antara karakter maskot dan gelembung dialog (speech bubble). Bubble text harus selalu dekat dan terhubung visual dengan karakter yang berbicara.
 12. DILARANG memberikan terjemahan nama kartu tarot ke Bahasa Indonesia di dalam tanda kurung (misalnya jangan tulis "Eight of Wands (Eight Tongkat)" atau "The Fool (Si Pandir)"). Cukup gunakan nama kartu aslinya secara natural.
 13. DILARANG menggunakan model lama yang telah didepresiasi Google; gunakan model aktif resmi yang didukung akun API (`gemini-3.5-flash-lite`).
+14. DILARANG mencantumkan nama lengkap asli pengguna di watermark aplikasi; gunakan alias/nickname resmi (`mifthspace`).
 
 ### WAJIB DILAKUKAN (Dos):
-1. WAJIB mempertahankan tanda tangan pembuat: "✦ Crafted with magic by Nova Miftakhul Huda ✦".
+1. WAJIB mempertahankan tanda tangan pembuat: "✦ Crafted with magic by mifthspace ✦".
 2. WAJIB menggunakan audio nyata untuk interaksi kartu (shuffle, slide, flip).
 3. WAJIB menjaga performa responsif mobile-friendly, ukuran tap target minimal 44x44px.
 4. WAJIB memprioritaskan kontrol taktil pengguna di setiap tahapan ritual.
