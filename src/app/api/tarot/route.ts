@@ -272,18 +272,32 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
 }
 `;
 
-    // 15-second auto-fallback timeout using official gemini-2.5-flash
+    // 15-second timeout using active models (gemini-3.8-flash / gemini-flash-latest)
     const fetchWithTimeout = async (): Promise<GeminiReadingResponse> => {
-      const model = genAI.getGenerativeModel({
-        model: 'gemini-2.5-flash',
-        generationConfig: {
-          responseMimeType: 'application/json',
-          temperature: 0.7,
-        },
-      });
+      let text = '';
+      try {
+        const model = genAI.getGenerativeModel({
+          model: 'gemini-3.8-flash',
+          generationConfig: {
+            responseMimeType: 'application/json',
+            temperature: 0.7,
+          },
+        });
+        const result = await model.generateContent(prompt);
+        text = result.response.text();
+      } catch (e1: any) {
+        console.warn('Fallback to gemini-flash-latest:', e1?.message);
+        const model2 = genAI.getGenerativeModel({
+          model: 'gemini-flash-latest',
+          generationConfig: {
+            responseMimeType: 'application/json',
+            temperature: 0.7,
+          },
+        });
+        const result2 = await model2.generateContent(prompt);
+        text = result2.response.text();
+      }
 
-      const result = await model.generateContent(prompt);
-      const text = result.response.text();
       return JSON.parse(text) as GeminiReadingResponse;
     };
 
@@ -294,7 +308,7 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
     const readingData = await Promise.race([fetchWithTimeout(), timeoutPromise]);
     return NextResponse.json(readingData, {
       headers: {
-        'X-Tarot-Engine': 'gemini-2.5-flash',
+        'X-Tarot-Engine': 'gemini-3.8-flash',
       },
     });
   } catch (error: any) {
