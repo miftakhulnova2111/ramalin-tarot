@@ -309,3 +309,17 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
     });
   }
 }
+
+export async function GET() {
+  if (!apiKey) {
+    return NextResponse.json({ hasKey: false, message: 'No GEMINI_API_KEY configured' });
+  }
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+    const data = await res.json();
+    const modelNames = data.models ? data.models.map((m: any) => m.name.replace('models/', '')) : data;
+    return NextResponse.json({ hasKey: true, modelNames });
+  } catch (err: any) {
+    return NextResponse.json({ hasKey: true, error: err.message });
+  }
+}
