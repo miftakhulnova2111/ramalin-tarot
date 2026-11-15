@@ -44,12 +44,14 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
   3. Ingin ada layar transisi khusus saat mascot sedang bersiap membaca pikiran/aura sembari menunggu AI.
   4. Saat sesi selesai dan user memilih ulang, ulangnya HARUS langsung dari form/meja kartu, TIDAK mengulang percakapan prolog.
   5. Saat membuka kartu, JANGAN otomatis berputar sendiri, buat menjadi "Ketuk untuk Buka Kartu" (manual tap-to-reveal) secara bertahap (Masa Lalu -> Masa Kini -> Masa Depan).
+  6. Audio sound effect yang sekarang masih jelek. Suara harus benar-benar tebal, berbobot, cinematic/ASMR kartu nyata, dan tidak boleh tercampur frekuensi beeps oscillator sintetis.
 - Solusi & Rencana:
   1. Menambahkan stage `PROLOGUE` interaktif (3 frame dialog sang Peramal dengan tombol "Lanjut ✦" dan opsi "Lewati").
   2. Menyediakan 4 Quick Chips topik instan (Asmara, Karier, Kegalauan, Pesan Hari Ini) dan nama dibuat santai (opsional).
   3. Menampilkan layar transisi khusus "Sedang Membaca Pikiranmu" saat status `FETCHING_READING` dengan teks dinamis.
   4. Logika `resetSession` mengarahkan stage langsung ke `INPUT_FORM`, bukan ke `PROLOGUE`.
   5. Mekanisme membuka kartu diubah menjadi manual tap-to-reveal: kartu pertama berdenyut pendar emas, pengguna mengetuknya untuk membuka dengan efek suara snap kartu, lalu lanjut ke kartu kedua dan ketiga.
+  6. Mengganti seluruh aset SFX dengan audio foley/cinematic card pack berkualitas tinggi (shuffle tebal bertempo mantap, snap kartu berat berbobot dengan thud meja/felt, tanpa beeps oscillator sama sekali).
 
 ---
 

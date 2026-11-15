@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { History as HistoryIcon } from 'lucide-react';
+import { History as HistoryIcon, Volume2, VolumeX } from 'lucide-react';
 import { audioManager } from '@/utils/audio';
 import { useTarotEngine } from '@/hooks/useTarotEngine';
 import { useAssetPreloader } from '@/hooks/useAssetPreloader';
 import { CharacterHeader } from '@/components/CharacterHeader';
+import { PrologueStage } from '@/components/PrologueStage';
 import { InputFormStage } from '@/components/InputFormStage';
 import { ShuffleStage } from '@/components/ShuffleStage';
 import { TriangleSpreadStage } from '@/components/TriangleSpreadStage';
@@ -31,19 +32,20 @@ export default function TarotPage() {
     startReading,
     lockCard,
     flipCard,
-    revealCardsSequentially,
     resetSession,
   } = useTarotEngine();
 
   const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
   const [isShareOpen, setIsShareOpen] = useState<boolean>(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
+  const [isMuted, setIsMuted] = useState<boolean>(false);
   const [savedHistory, setSavedHistory] = useState<SavedReadingSession[]>([]);
 
   // Autoplay BGM automatically on first user touch/pointer interaction anywhere
   useEffect(() => {
     const startAudioOnFirstTouch = () => {
       audioManager.startBGM();
+      setIsMuted(audioManager.isMuted());
       window.removeEventListener('pointerdown', startAudioOnFirstTouch);
       window.removeEventListener('keydown', startAudioOnFirstTouch);
     };
@@ -109,7 +111,7 @@ export default function TarotPage() {
     setStage('READING_COMPLETE');
   };
 
-  // Trigger Gemini API and Sequential Card Reveal
+  // Trigger Gemini API and Transition to Manual Reveal
   const fetchingRef = useRef(false);
 
   useEffect(() => {
@@ -132,33 +134,27 @@ export default function TarotPage() {
           setReading(data);
           saveSessionToHistory(userName, question, selectedCards, data);
 
-          // Transition to revealing phase
+          // Transition directly to manual tap-to-reveal phase!
           setStage('REVEALING_CARDS');
-
-          // Trigger sequential 3D flips (Card 1 -> Card 2 -> Card 3)
-          revealCardsSequentially(() => {
-            setActiveCardIndex(0);
-            // HOLD HERE! Do not immediately jump to explanation
-            setStage('CARDS_REVEALED_HOLD');
-            fetchingRef.current = false;
-          });
+          fetchingRef.current = false;
         } catch (err) {
           console.error('Fetch error:', err);
-          // If error occurs, still reveal cards and hold
           setStage('REVEALING_CARDS');
-          revealCardsSequentially(() => {
-            setActiveCardIndex(0);
-            setStage('CARDS_REVEALED_HOLD');
-            fetchingRef.current = false;
-          });
+          fetchingRef.current = false;
         }
       };
 
       runReadingFlow();
     }
-  }, [stage, selectedCards.length, userName, question, revealCardsSequentially]);
+  }, [stage, selectedCards.length, userName, question]);
 
   const currentStep = Math.min(selectedCards.length + 1, 3);
+  const allCardsFlipped = selectedCards.length === 3 && selectedCards.every((c) => c.isFlipped);
+
+  const handleToggleBgm = () => {
+    const isPlaying = audioManager.toggleBGM();
+    setIsMuted(!isPlaying);
+  };
 
   return (
     <main className="h-[100dvh] max-h-[100dvh] w-full max-w-md mx-auto flex flex-col overflow-hidden relative bg-[#0C0614] text-tarot-text select-none">
@@ -168,19 +164,38 @@ export default function TarotPage() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_65%,rgba(255,213,140,0.08),transparent_65%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(4,2,7,0.85)_100%)] pointer-events-none" />
 
-      {/* Sleek Mystical Top Bar (Clean, no audio toggle button) */}
-      <header className="flex-shrink-0 w-full h-11 px-4 flex items-center justify-between border-b border-tarot-gold/15 bg-tarot-surface z-30">
+      {/* Semantic Mystical Header with Quick BGM & History Controls */}
+      <header className="flex-shrink-0 w-full h-11 px-4 flex items-center justify-between border-b border-amber-300/15 bg-stone-900/90 backdrop-blur-md z-30 select-none">
         <div className="flex items-center gap-2">
-          <span className="font-serif font-bold text-xs text-amber-300 tracking-widest uppercase">
+          <h1 className="font-serif font-bold text-xs text-amber-300 tracking-widest uppercase">
             Ramalin Tarot
+          </h1>
+          <span className="text-[10px] text-amber-200/50 font-sans hidden xs:inline">
+            ✦ Tebaran 3 Kartu
           </span>
         </div>
+
         <div className="flex items-center gap-1.5">
+          {/* Quick Audio Mute / Unmute Toggle */}
+          <button
+            type="button"
+            onClick={handleToggleBgm}
+            className="p-1.5 rounded-lg text-amber-200/70 hover:text-amber-200 hover:bg-stone-800 transition-colors cursor-pointer"
+            title={isMuted ? 'Nyalakan Musik' : 'Matikan Musik'}
+          >
+            {isMuted ? (
+              <VolumeX className="w-4 h-4 text-stone-500" />
+            ) : (
+              <Volume2 className="w-4 h-4 text-amber-300" />
+            )}
+          </button>
+
+          {/* History Button */}
           {savedHistory.length > 0 && (
             <button
               type="button"
               onClick={() => setIsHistoryOpen(true)}
-              className="p-1.5 rounded-lg text-tarot-muted hover:text-amber-200 hover:bg-tarot-surfaceElevated transition-colors"
+              className="p-1.5 rounded-lg text-amber-200/70 hover:text-amber-200 hover:bg-stone-800 transition-colors cursor-pointer"
               title="Riwayat Sesi"
             >
               <HistoryIcon className="w-4 h-4 text-amber-300" />
@@ -191,10 +206,17 @@ export default function TarotPage() {
 
       {/* Main Viewport Content Area */}
       <div className="flex-1 w-full flex flex-col justify-start overflow-hidden relative z-10">
-        {/* Character Animation & Dialog */}
-        <CharacterHeader stage={stage} userName={userName} currentStep={currentStep} />
+        {/* Character Animation & Dialog (Visible in all stages except Prologue) */}
+        {stage !== 'PROLOGUE' && (
+          <CharacterHeader stage={stage} userName={userName} currentStep={currentStep} />
+        )}
 
-        {/* State 0: INPUT_FORM */}
+        {/* Stage 0: PROLOGUE (Interactive Story Dialogue with Fortune Teller) */}
+        {stage === 'PROLOGUE' && (
+          <PrologueStage onComplete={() => setStage('INPUT_FORM')} />
+        )}
+
+        {/* Stage 1: INPUT_FORM (Meja Altar Quick Focus Chips) */}
         {stage === 'INPUT_FORM' && (
           <InputFormStage
             onStart={startReading}
@@ -203,7 +225,7 @@ export default function TarotPage() {
           />
         )}
 
-        {/* State 1: SHUFFLING & CARD_LOCKING */}
+        {/* Stage 2: SHUFFLING & CARD_LOCKING */}
         {(stage === 'SHUFFLING' || stage === 'CARD_LOCKING') && (
           <ShuffleStage
             currentStep={currentStep}
@@ -214,47 +236,49 @@ export default function TarotPage() {
           />
         )}
 
-        {/* State 2: FETCHING_READING & REVEALING_CARDS */}
-        {(stage === 'FETCHING_READING' || stage === 'REVEALING_CARDS') && (
-          <div className="flex flex-col items-center justify-center my-auto px-4 z-10 flex-1">
+        {/* Stage 3: FETCHING_READING (Mascot Mind Reading Transition) */}
+        {stage === 'FETCHING_READING' && (
+          <div className="flex flex-col items-center justify-center my-auto px-4 z-10 flex-1 w-full">
             <TriangleSpreadStage
               cards={selectedCards}
-              isLoadingAI={stage === 'FETCHING_READING'}
+              isLoadingAI={true}
             />
-            <div className="mt-3 text-center">
-              <p className="text-xs font-serif italic text-amber-300/80 tracking-wide">
-                {stage === 'FETCHING_READING'
-                  ? 'Menyelaraskan frekuensi takdir dengan semesta...'
-                  : 'Membuka tabir ketiga kartu pilihanmu...'}
-              </p>
-            </div>
           </div>
         )}
 
-        {/* State 3: CARDS_REVEALED_HOLD (Hold gate with "Baca Penjelasannya" button) */}
-        {stage === 'CARDS_REVEALED_HOLD' && (
+        {/* Stage 4: REVEALING_CARDS & CARDS_REVEALED_HOLD (Manual Tap-to-Reveal) */}
+        {(stage === 'REVEALING_CARDS' || stage === 'CARDS_REVEALED_HOLD') && (
           <div className="flex flex-col items-center justify-between px-4 py-2 z-10 flex-1 w-full">
             <div className="my-auto w-full flex flex-col items-center">
               <TriangleSpreadStage
                 cards={selectedCards}
                 isLoadingAI={false}
+                canTapToReveal={true}
+                onFlipCard={(idx) => flipCard(idx)}
+                onCardClick={(idx) => flipCard(idx)}
               />
             </div>
 
-            {/* Prominent CTA button requested by user */}
+            {/* Action Zone: Tap instructions OR "Baca Penjelasan Lengkap" when all are flipped */}
             <div className="w-full pb-3 pt-2">
-              <button
-                type="button"
-                onClick={() => setStage('READING_COMPLETE')}
-                className="w-full min-h-[52px] bg-amber-500 hover:bg-amber-400 active:scale-[0.98] text-stone-950 font-serif font-bold text-base tracking-wide rounded-2xl flex items-center justify-center gap-2 border border-amber-300/40 cursor-pointer transition-all"
-              >
-                <span>Baca Penjelasannya</span>
-              </button>
+              {allCardsFlipped ? (
+                <button
+                  type="button"
+                  onClick={() => setStage('READING_COMPLETE')}
+                  className="w-full min-h-[52px] bg-amber-500 hover:bg-amber-400 active:scale-[0.98] text-stone-950 font-serif font-bold text-base tracking-wide rounded-2xl flex items-center justify-center gap-2 border border-amber-300/40 cursor-pointer shadow-lg shadow-amber-950/40 transition-all animate-bounce"
+                >
+                  <span>✦ Baca Penjelasan Lengkap ✦</span>
+                </button>
+              ) : (
+                <div className="w-full py-2.5 text-center text-xs font-serif text-amber-200/70">
+                  Sentuh kartu yang berpendar untuk membuka tabir takdir
+                </div>
+              )}
             </div>
           </div>
         )}
 
-        {/* State 4: READING_COMPLETE */}
+        {/* Stage 5: READING_COMPLETE */}
         {stage === 'READING_COMPLETE' && reading && (
           <div className="flex flex-col justify-between w-full max-w-full flex-grow overflow-hidden z-10">
             {/* Spread is visible in upper portion */}

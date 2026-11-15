@@ -1,11 +1,12 @@
 export type GameStage =
-  | 'INPUT_FORM'        // Phase 0: Name & Question Input (Akinator Welcome)
-  | 'SHUFFLING'         // Phase 1: Card Fan Arc Carousel (Top slots, bottom button)
-  | 'CARD_LOCKING'      // Phase 1b: Zoom, Evil Laugh, and swoop UP to slot
-  | 'FETCHING_READING'  // Phase 2: Connecting with Gemini Knowledge Base
-  | 'REVEALING_CARDS'   // Phase 2b: Sequential 3D Card Flips
-  | 'CARDS_REVEALED_HOLD' // Phase 2c: Hold gate showing 3 open cards + "Baca Penjelasannya" CTA
-  | 'READING_COMPLETE'; // Phase 3: Unified Reading Sheet & Share Card
+  | 'PROLOGUE'          // Phase 0: Interactive Story Dialogue with Fortune Teller
+  | 'INPUT_FORM'        // Phase 1: Altar Quick Focus Chips & Optional Name/Question
+  | 'SHUFFLING'         // Phase 2: Card Fan Arc Carousel
+  | 'CARD_LOCKING'      // Phase 2b: Card selection docking into slot
+  | 'FETCHING_READING'  // Phase 3: Mascot Mind Reading Transition & Gemini AI Call
+  | 'REVEALING_CARDS'   // Phase 4: Manual Tap-to-Reveal 3 cards
+  | 'CARDS_REVEALED_HOLD' // Phase 4b: Hold gate showing 3 open cards + "Baca Penjelasan Lengkap"
+  | 'READING_COMPLETE'; // Phase 5: Unified Reading Sheet & Share Card
 
 export interface TarotCardData {
   id: number;

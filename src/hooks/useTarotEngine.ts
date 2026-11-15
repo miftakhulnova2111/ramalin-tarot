@@ -29,7 +29,7 @@ function shuffleCards<T>(items: T[]): T[] {
 }
 
 export function useTarotEngine() {
-  const [stage, setStage] = useState<GameStage>('INPUT_FORM');
+  const [stage, setStage] = useState<GameStage>('PROLOGUE');
   const [userName, setUserName] = useState<string>('');
   const [question, setQuestion] = useState<string>('');
   const [remainingDeck, setRemainingDeck] = useState<TarotCardData[]>([]);
@@ -113,6 +113,7 @@ export function useTarotEngine() {
 
   // Mark a specific card as flipped open
   const flipCard = useCallback((cardIndex: number) => {
+    audioManager.playCardSnap();
     setSelectedCards((prev) =>
       prev.map((card, idx) =>
         idx === cardIndex ? { ...card, isFlipped: true } : card
