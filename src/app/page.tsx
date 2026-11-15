@@ -41,7 +41,17 @@ export default function TarotPage() {
   const [isHistoryOpen, setIsHistoryOpen] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [savedHistory, setSavedHistory] = useState<SavedReadingSession[]>([]);
-  const [readingCount, setReadingCount] = useState<number>(0);
+  const [readingCount, setReadingCount] = useState<number>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const savedCount = sessionStorage.getItem('ramalin_session_count');
+        return savedCount ? parseInt(savedCount, 10) : 0;
+      } catch {
+        return 0;
+      }
+    }
+    return 0;
+  });
   const [isInterventionOpen, setIsInterventionOpen] = useState<boolean>(false);
 
   // Load session count from sessionStorage
@@ -175,8 +185,16 @@ export default function TarotPage() {
   }, [stage, selectedCards.length, userName, question]);
 
   const handleRestartSession = () => {
+    let count = readingCount;
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = sessionStorage.getItem('ramalin_session_count');
+        if (stored) count = parseInt(stored, 10);
+      } catch {}
+    }
+
     // If completed readings is a multiple of 3 (3, 6, 9...), trigger fortune teller intervention
-    if (readingCount > 0 && readingCount % 3 === 0) {
+    if (count > 0 && count % 3 === 0) {
       setIsInterventionOpen(true);
     } else {
       resetSession();
