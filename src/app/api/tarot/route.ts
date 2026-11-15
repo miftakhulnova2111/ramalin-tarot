@@ -274,42 +274,43 @@ FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
 }
 `;
 
-    // 25-second timeout using ultra-fast active model gemini-2.5-flash-lite
-    const fetchWithTimeout = async (): Promise<{ data: GeminiReadingResponse; modelUsed: string }> => {
-      let text = '';
-      let modelUsed = 'gemini-2.5-flash-lite';
-      try {
-        const model = genAI.getGenerativeModel({
-          model: 'gemini-2.5-flash-lite',
+    // Native fetch to Google Generative Language API (zero-latency, no SDK stall)
+    const fetchWithDirectAPI = async (): Promise<{ data: GeminiReadingResponse; modelUsed: string }> => {
+      const targetModel = 'gemini-2.5-flash-lite';
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${apiKey}`;
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             responseMimeType: 'application/json',
             temperature: 0.7,
           },
-        });
-        const result = await model.generateContent(prompt);
-        text = result.response.text();
-      } catch (e1: any) {
-        console.warn('Fallback to gemini-3.8-flash:', e1?.message);
-        modelUsed = 'gemini-3.8-flash';
-        const model2 = genAI.getGenerativeModel({
-          model: 'gemini-3.8-flash',
-          generationConfig: {
-            responseMimeType: 'application/json',
-            temperature: 0.7,
-          },
-        });
-        const result2 = await model2.generateContent(prompt);
-        text = result2.response.text();
+        }),
+      });
+
+      if (!res.ok) {
+        const errBody = await res.text();
+        throw new Error(`Google API ${res.status}: ${errBody.slice(0, 300)}`);
       }
 
-      return { data: JSON.parse(text) as GeminiReadingResponse, modelUsed };
+      const resJson = await res.json();
+      const rawText = resJson?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!rawText) {
+        throw new Error('No candidate text returned by Gemini');
+      }
+
+      const parsed = JSON.parse(rawText) as GeminiReadingResponse;
+      return { data: parsed, modelUsed: targetModel };
     };
 
     const timeoutPromise = new Promise<never>((_, reject) =>
-      setTimeout(() => reject(new Error('Gemini generation timeout (25s)')), 25000)
+      setTimeout(() => reject(new Error('Direct API timeout (15s)')), 15000)
     );
 
-    const { data: readingData, modelUsed } = await Promise.race([fetchWithTimeout(), timeoutPromise]);
+    const { data: readingData, modelUsed } = await Promise.race([fetchWithDirectAPI(), timeoutPromise]);
     return NextResponse.json(readingData, {
       headers: {
         'X-Tarot-Engine': `gemini:${modelUsed}`,
