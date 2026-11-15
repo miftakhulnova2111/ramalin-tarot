@@ -161,7 +161,14 @@ export default function TarotPage() {
 
           // Increment reading session count
           setReadingCount((prev) => {
-            const next = prev + 1;
+            let base = prev;
+            if (typeof window !== 'undefined') {
+              try {
+                const stored = sessionStorage.getItem('ramalin_session_count');
+                if (stored) base = Math.max(base, parseInt(stored, 10));
+              } catch {}
+            }
+            const next = base + 1;
             try {
               sessionStorage.setItem('ramalin_session_count', next.toString());
             } catch (e) {
