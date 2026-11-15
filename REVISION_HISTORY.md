@@ -67,6 +67,21 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
      - Mengurangi skala tinggi kartu segitiga pada mobile (sekitar 135px–145px) agar Row 1 dan Row 2 muat rapi dalam viewport tanpa overflow.
      - Memastikan tombol aksi CTA di bagian bawah selalu terlihat utuh (pinned/visible dalam viewport) dan langsung bisa diklik saat ketiga kartu terbuka.
 
+### Revisi 5: Posisi Bubble Text Dialog & Eliminasi Penggunaan Emoji
+- Tanggal: 15 November 2026
+- Masukan Pengguna:
+  1. Posisi bubble text kurang ke atas (ada celah kosong terlalu jauh antara avatar peramal dan kotak dialog di bawah).
+  2. Kurangi penggunaan emoji di aplikasi.
+- Solusi & Tindakan:
+  1. Merestrukturisasi tata letak vertikal `PrologueStage.tsx`:
+     - Menyatukan avatar maskot, cincin altar, badge nama babak, dan kotak bubble dialog ke dalam satu wadah tengah terpadu (`flex-1 flex-col items-center justify-center`).
+     - Menaikkan posisi kotak dialog tepat di bawah maskot dengan margin ringkas (`mt-4`), sehingga ekor dialog (*speech bubble pointer*) tepat menunjuk ke arah karakter peramal.
+     - Tombol "Lanjut ✦" tetap terjangkar rapi dan proporsional di bagian bawah layar.
+  2. Menghapus seluruh emoji berwarna bawaan OS:
+     - Mengganti emoji pada 4 tombol fokus cepat di `InputFormStage.tsx` (`❤️`, `💼`, `🌙`, `⚡`) dengan ikon SVG vektor elegan monokrom dari `lucide-react` (`Heart`, `Briefcase`, `Moon`, `Compass`).
+     - Mengganti teks tombol prolog `Buka Altar Tarot 🔮` menjadi `Buka Altar Tarot ✦`.
+     - Menambahkan instruksi ketat pada system prompt Gemini API (`/api/tarot/route.ts`) agar dilarang menghasilkan emoji dalam sapaan, narasi bacaan, maupun nasihat.
+
 ---
 
 ## 2. Daftar Pantangan & Aturan Mutlak (Do & Don't)
@@ -81,6 +96,8 @@ WAJIB dibaca oleh asisten AI sebelum melakukan generate code atau refaktor baru 
 7. DILARANG menggunakan background polos atau warna datar yang merusak atmosfer mistik.
 8. DILARANG menuliskan label posisi "PAST", "PRESENT", "FUTURE" di bawah kartu pada tahap tebaran/buka kartu.
 9. DILARANG membuat layout yang mendorong tombol aksi tenggelam di bawah layar viewport smartphone.
+10. DILARANG menggunakan emoji berwarna OS (seperti 🔮, ❤️, 💼, ⚡, dsb) di antarmuka maupun pada hasil generate AI. Gunakan ikon SVG minimalis atau glif monokrom elegan (seperti ✦).
+11. DILARANG membiarkan celah kosong terlalu jauh antara karakter maskot dan gelembung dialog (speech bubble). Bubble text harus selalu dekat dan terhubung visual dengan karakter yang berbicara.
 
 ### WAJIB DILAKUKAN (Dos):
 1. WAJIB mempertahankan tanda tangan pembuat: "✦ Crafted with magic by Nova Miftakhul Huda ✦".

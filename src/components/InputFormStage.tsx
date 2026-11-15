@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { History, Sparkles, PenLine } from 'lucide-react';
+import { History, Sparkles, PenLine, Heart, Briefcase, Moon, Compass } from 'lucide-react';
 import { audioManager } from '@/utils/audio';
 
 interface InputFormStageProps {
@@ -13,25 +13,25 @@ interface InputFormStageProps {
 const QUICK_TOPICS = [
   {
     id: 'asmara',
-    icon: '❤️',
+    icon: Heart,
     label: 'Asmara & Hubungan',
     query: 'Bagaimana kejelasan dan arah perjalanan asmara serta ikatan hatiku saat ini?',
   },
   {
     id: 'karier',
-    icon: '💼',
+    icon: Briefcase,
     label: 'Arah Karier & Rezeki',
     query: 'Bagaimana peluang kelancaran rezeki dan arah perkembangan karierku ke depan?',
   },
   {
     id: 'galau',
-    icon: '🌙',
+    icon: Moon,
     label: 'Mengurai Kegalauan Batin',
     query: 'Apa petunjuk semesta untuk mengatasi kegelisahan batin yang sedang kuhadapi?',
   },
   {
     id: 'semesta',
-    icon: '⚡',
+    icon: Compass,
     label: 'Pesan Semesta Hari Ini',
     query: 'Pesan hikmah dan panduan apa yang paling penting untuk kudengar hari ini?',
   },
@@ -93,6 +93,7 @@ export const InputFormStage: React.FC<InputFormStageProps> = ({
           <div className="grid grid-cols-2 gap-2 pt-1">
             {QUICK_TOPICS.map((topic) => {
               const isSelected = selectedTopicId === topic.id;
+              const Icon = topic.icon;
               return (
                 <button
                   key={topic.id}
@@ -104,7 +105,11 @@ export const InputFormStage: React.FC<InputFormStageProps> = ({
                       : 'bg-stone-950/60 border-stone-800 text-stone-300 hover:border-amber-300/40 hover:text-amber-200'
                   }`}
                 >
-                  <span className="text-base select-none">{topic.icon}</span>
+                  <Icon
+                    className={`w-4 h-4 flex-shrink-0 transition-colors ${
+                      isSelected ? 'text-amber-300' : 'text-amber-400/70'
+                    }`}
+                  />
                   <span className="text-xs font-serif font-medium leading-tight">
                     {topic.label}
                   </span>

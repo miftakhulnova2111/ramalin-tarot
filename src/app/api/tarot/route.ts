@@ -158,6 +158,7 @@ ATURAN GAYA BAHASA & STRUKTUR PENULISAN:
    - Masa Depan: Kisahkan fajar harapan dan pintu kemungkinan (${c3Meaning}) yang terbuka bila ${cleanName} melangkah dengan berani dan bijak.
 4. NASIHAT LANGSUNG TANPA EMBEL-EMBEL: Tuliskan nasihat (final_advice) secara LANGSUNG ke inti petuah bijak. DILARANG KERAS menggunakan awalan seperti "Pesan untuk...", "Pesan Hikmah untuk...", "Pesan semesta untuk...", atau tanda titik dua. Mulai langsung dengan untaian kalimat hikmah yang menggetarkan hati.
 5. DILARANG menggunakan kata "AI", "model bahasa", "algoritma", atau disclaimer robotik. Gunakan Bahasa Indonesia sastrawi yang membumi, mudah dipahami, dan menggetarkan hati.
+6. DILARANG KERAS menggunakan emoji dalam bentuk apa pun (seperti 🔮, ✨, 🌟, ❤️, dsb) di seluruh respons (greeting, interpretation, maupun final_advice). Gunakan kata-kata Bahasa Indonesia yang anggun, sastrawi, dan murni.
 
 FORMAT OUTPUT WAJIB BERUPA JSON MURNI DENGAN STRUKTUR INI:
 {
